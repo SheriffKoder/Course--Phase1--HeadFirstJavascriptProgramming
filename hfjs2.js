@@ -51,10 +51,10 @@ var dog = { name: "Rover", weight: 35 };
 white space does not matter between code*/
 
 ////var name = price - price * ( discount / 100 );
-// name, the variable
 //statement, the whole line
-//expression, the right side
+// name, the variable
 // = assignment
+//expression, the right side
 
 //"text" + "concatinate" + StringOrNumberValueHere
 
@@ -65,3 +65,48 @@ age < 14
 cost >=3.99         
 animal == "bear"    
 */
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+
+/*65
+while, if
+
+document.write ("Another scoop <br>");   //block
+alert("scoops > 5");
+
+*/
+
+//NOTES
+//console.log(1000+"108"); //108 is a string, never gets added
+//primitive types, that is, numbers, strings and booleans.
+//put <script> in html end of body, so page can load the DOM before JS
+
+
+
+//let scoops = 5;
+
+/*
+while ( scoops > 0 ) {                        //conditional   
+    document.write ("Another scoop <br>");   //block
+    scoops = scoops -1;
+}                                            //loop again while conditional true
+document.write("Icecream finished!");          //when loop finishes, continue here
+*/
+
+/*
+if ( scoops >= 5 ) {
+    alert("scoops > 5");
+}
+else if ( scoops < 3 ) {
+    alert("scoops getting low");
+}
+else if ( scoops < 2 ) {
+    alert("scoops getting low");
+}
+else {
+    alert("scoops available");
+
+}
+*/
+
+

@@ -89,6 +89,16 @@ alert("scoops > 5");
 //HTML <script type="text/javascript" >
 //a script tag with a file reference cant be used for code lines, make another script tag
 
+//Number(true) gives 1 , string of numbers /boolean converter
+//first 0 is avoided
+//Number(x) == === 2; true/false
+//+'string of numbers'; does the same thing
+
+//parseInt('32px'); // 32 , takes integers, 
+//also has a second parameter numerical type
+
+//let value = "Sheriff Koder" > SheriffKoder
+//let value2 = value.replace(/\s+/g, ''); // replace space with no input
 
 
 //let scoops = 5;
@@ -121,99 +131,9 @@ else {
 
 /*/////////////////////////////////////////////////////////////////////////////*/
 
-/*87-91, */
 
-let hits = 0;
-let inputs = 0;
-let missout = 0;
-let ship_positions = [5,6];
-let ship_hits = [];
-let user_guess;
-//let guess_positions = Array(7);
+/*87-91, new file*/
 
-//console.log(ship_positions);
-//console.log(guess_positions.length);
-
-//let user_guess = prompt('guess from 1 to 7');
-//let user_guess = 5;
-//console.log(user_guess);
-
-hitandcheck();
-console.log("Result");
-console.log("inputs" + inputs);
-console.log("hits" + hits);
-console.log("misses" + missout);
-
-
-
-function hitandcheck ( ) { 
-    
-    while (hits < ship_positions.length && user_guess !== 'x') {
-
-
-        user_guess = prompt('guess from 1 to 7');
-        inputs++;
-
-        let miss1 = 0;
-
-        for ( i=0; i<ship_positions.length; i++ ) {
-            
-
-            if (user_guess == ship_positions[i]) {
-                checkSink(user_guess);
-
-            }
-            else {
-                console.log("not found at" + i);
-                miss1++;
-                console.log(miss1);
-            }
-
-            if (miss1 == ship_positions.length) {
-                missout++;
-            }
-
-        }
-    }
-
-
-
-
-        function checkSink (user_input) {
-
-            let all_good = 0;
-
-            for (i=0; i<ship_hits.length; i++) {
-                if (user_input !== ship_hits[i]) {
-
-                    all_good++;
-                }
-            }    
-            console.log(all_good);
-            console.log(ship_hits.length);
-
-            if (all_good == ship_hits.length) {
-
-                console.log("location exist and not hit before");
-
-                console.log("ship hits was" + ship_hits);
-                ship_hits.push(user_input);
-                console.log("ship hits now" + ship_hits);
-
-                console.log("hits was " + hits);
-                hits++;
-                console.log("hits now " + hits);
-
-
-            }
-
-            else if ( all_good !== ship_hits.length) {
-                console.log("location exist but hit before");
-
-            }
-        }
-        
-    }
 
 /*
 

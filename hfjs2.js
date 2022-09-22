@@ -134,6 +134,7 @@ else {
 
 /*87-91, new file*/
 
+//console.log(function); adds to the calculations for the file
 
 /*
 

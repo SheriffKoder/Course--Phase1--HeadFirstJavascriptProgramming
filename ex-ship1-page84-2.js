@@ -18,10 +18,26 @@ console.log("misses" + missout);
 
 
 
+function generate_random_locations () {
 
+    //generate starting location from 0->4
+    let location0 = Math.floor ( Math.random() * 5 );
+    //let location1 = location0+1;
+    //let location2 = location1+1;
+
+    let j = 0;
+    for (i=0; i<3; i++) {
+
+        ship_positions[i] = location0 + j ;
+        j++;
+    }
+    console.log (ship_positions);
+}
+//generate_random_locations();
 
 
 function take_input () {
+    generate_random_locations();
 
     //console.log(check_location());// do not use here, adds to the calculations for the file
     while (user_input !== null && hits < ship_positions.length ) {

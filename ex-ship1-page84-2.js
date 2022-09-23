@@ -3,9 +3,11 @@
 let hits = 0;
 let inputs = 0;
 let missout = 0;
-let ship_positions = [5,6];
+let ship_positions = [1,6];
 let hit_record = [0];
 let user_input; //user guess is none
+
+
 
 
 take_input();
@@ -16,21 +18,43 @@ console.log("misses" + missout);
 
 
 
+
+
+
 function take_input () {
 
     //console.log(check_location());// do not use here, adds to the calculations for the file
-    while (user_input !== "x" && hits < ship_positions.length ) {
+    while (user_input !== null && hits < ship_positions.length ) {
         
-        user_input = prompt('guess from 1 to 7');
+        user_input = prompt('guess from 1 to 6');
         inputs++;
 
-        if ( check_location() && check_if_put_before() ) {
+        check_if_number_within_range();
+        if ( check_location() && check_if_put_before() && check_if_number_within_range() ) {
         
                 hits++;
-                hit_record.push(user_input);            
+                hit_record.push(user_input);           
             
         }
     }
+}
+
+function check_if_number_within_range () {
+
+    let user_inputx = user_input;
+
+    //enter 'number' from 1 to ship_positions.length
+    if ((user_inputx !=NaN) && (user_inputx > 0) && (user_inputx <= 6) ) {
+        console.log("in range");
+        return true;
+    }
+
+    else {
+        console.log("out of range");
+        alert('please enter a valid number');
+        return false;
+    }
+
 }
 
 

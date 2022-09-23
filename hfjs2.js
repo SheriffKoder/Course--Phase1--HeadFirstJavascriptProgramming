@@ -97,8 +97,8 @@ alert("scoops > 5");
 //parseInt('32px'); // 32 , takes integers, 
 //also has a second parameter numerical type
 
-//let value = "Sheriff Koder" > SheriffKoder
-//let value2 = value.replace(/\s+/g, ''); // replace space with no input
+//let name = "Sheriff Koder" > SheriffKoder
+//let name2 = name.replace(/\s+/g, ''); // replace space with no input
 
 
 //let scoops = 5;
@@ -136,7 +136,27 @@ else {
 
 //console.log(function); adds to the calculations for the file
 
+
+//let twentytwo_09 = prompt("enter value"); // returns null if cancelled
+
 /*
+check if valid input  
+if (guess < 0 || guess > 6) { 
+
+> logical operators, returns true or false
+    || or
+    && and
+    ! not (results in true if the expression is false)
+
+> boolean operators used in boolean expressions
+  which results in true or false
+
+    ==      if equal in value to
+    ===     if exactly equal in value to
+    <=      less than or equal
+    >=      greater than or equal
+    !=      not equal to
+
 
 
 */

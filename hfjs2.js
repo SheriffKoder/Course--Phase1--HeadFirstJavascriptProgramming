@@ -151,12 +151,73 @@ if (guess < 0 || guess > 6) {
 > boolean operators used in boolean expressions
   which results in true or false
 
-    ==      if equal in value to
+    ==      if equal in value to (comparison)
     ===     if exactly equal in value to
     <=      less than or equal
     >=      greater than or equal
     !=      not equal to
 
 
+if (guess == location1 || guess == location2 || guess == location3)
+
+if ((user_inputx !=NaN) && (user_inputx > 0) && (user_inputx <= 6) ) in range
+alternative look
+if (user_inputx < 0 || user_inputx > 6) //out of range , else do
+
+if (inStock == true && (onSale == true || price < 60))
+    true/false (true/false)
+
+
+var kb = 1200;
+var x = ( kb > 1000 ); //x = true
+if (x); //true?
+
+
+Math.random(); 0 - > 0.99
+
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+/*
+124
+
+function name (parameter) {
+    body;
+}
+
+bark("rover" , 20, 50); //50 is ignored, "20" treated like a number
+function bark(name, weight)
+
+
+
+
+
+
+
+*/
+
+bark("rover" , -50); //50 is ignored, "20" treated like a number
+
+function bark(name, weight) {
+    if (weight > 20) {
+    console.log(name + " says WOOF WOOF");
+    }
+    
+    else {
+    console.log(name + " says woof woof");
+    }
+}
+
+
+
+
+/*
+flexible itr
+x / / / x / / / x / / /
+/ / / / 
+x / / / each 4 itr, st/ps
+/ x / /
+/ / x / 
+/ / / x 
+/ / / / tue 6-12 grc,ml 12-6 ps 
 
 */

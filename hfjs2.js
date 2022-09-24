@@ -178,34 +178,59 @@ Math.random(); 0 - > 0.99
 
 /*/////////////////////////////////////////////////////////////////////////////*/
 /*
-124
+124-130
 
 function name (parameter) {
     body;
 }
 
-bark("rover" , 20, 50); //50 is ignored, "20" treated like a number
-function bark(name, weight)
+////////////////////////
+//passing to functions//
+
+var name = "rover"; or
+bark("rover" , 20, 50); 
+//50 is ignored, if put as "20" treated like a number
+bark("rover"); 
+//weight is undefined
+
+> function bark(name, weight)
+
+bark ( name, 100/4, (name == "ashley") ) 
+//can put numeric expressions, boolean returning true or false
 
 
 
+//there are built in functions like alert, prompt
+//a function can return values, do closures, and be used with objects,
+//you define a function with parameters and call it with "arguments"
+
+
+//pass by value//
+let x = 1;
+function doIt(x) {
+ x = 2;
+}
+console.log(param); // 1, because the parameter is used/changed locally
+//pass by value, the parameter takes a copy and the parameter is only what changes
+
+
+
+//functions can return
+
+function fun () {
+    let x = 1;
+    return x;
+}
+var y = fun(); //y is 1
 
 
 
 
 */
 
-bark("rover" , -50); //50 is ignored, "20" treated like a number
 
-function bark(name, weight) {
-    if (weight > 20) {
-    console.log(name + " says WOOF WOOF");
-    }
-    
-    else {
-    console.log(name + " says woof woof");
-    }
-}
+
+
 
 
 

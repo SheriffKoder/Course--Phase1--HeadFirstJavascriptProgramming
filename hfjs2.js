@@ -223,7 +223,35 @@ function fun () {
 }
 var y = fun(); //y is 1
 
+//tracing the flow of execution
 
+
+//variable declared inside a function: local
+used only in the function
+//variable declared outside a function: global
+used anywhere in the code
+
+
+
+
+//variable shadows
+//undeclared variable inside a function,
+will be global and used outside after the function's call
+and if duplicated without declaration will overwrite the global value
+but if name duplicated and declared, it will overwrite inside the function only
+
+
+let z = 5;
+func();
+function func () {
+    z = 0;
+    //let z = 0;
+    z = 1+2;
+}
+console.log(z); // 3, 5
+
+// a good programming practice to use
+local variables unless absolutely needed globals
 
 
 */
@@ -231,18 +259,3 @@ var y = fun(); //y is 1
 
 
 
-
-
-
-
-/*
-flexible itr
-x / / / x / / / x / / /
-/ / / / 
-x / / / each 4 itr, st/ps
-/ x / /
-/ / x / 
-/ / / x 
-/ / / / tue 6-12 grc,ml 12-6 ps 
-
-*/

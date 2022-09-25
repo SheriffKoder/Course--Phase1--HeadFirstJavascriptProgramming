@@ -5,7 +5,7 @@ let inputs = 0;
 let missout = 0;
 let ship_positions = [1,6];
 let hit_record = [0];
-let user_input; //user guess is none
+let user_input; //user guess is undefined
 
 
 
@@ -17,23 +17,6 @@ console.log("hits" + hits);
 console.log("misses" + missout);
 
 
-
-function generate_random_locations () {
-
-    //generate starting location from 0->4
-    let location0 = Math.floor ( Math.random() * 5 );
-    //let location1 = location0+1;
-    //let location2 = location1+1;
-
-    let j = 0;
-    for (i=0; i<3; i++) {
-
-        ship_positions[i] = location0 + j ;
-        j++;
-    }
-    console.log (ship_positions);
-}
-//generate_random_locations();
 
 
 function take_input () {
@@ -54,6 +37,24 @@ function take_input () {
         }
     }
 }
+
+
+function generate_random_locations () {
+
+    //generate starting location from 0->4
+    let location0 = Math.floor ( Math.random() * 5 );
+    //let location1 = location0+1;
+    //let location2 = location1+1;
+
+    let j = 0;
+    for (i=0; i<3; i++) {
+
+        ship_positions[i] = location0 + j ;
+        j++;
+    }
+    console.log (ship_positions);
+}
+
 
 function check_if_number_within_range () {
 
@@ -123,3 +124,51 @@ function check_if_put_before () {
         return false;
     }
 }
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*Example bubbles */
+
+let a = [ 11 , 11 , 2 , 11 ];
+let x = [0]; /* place to store highest value locations */
+
+        for (i=0; i<a.length; i++) {
+            check_if_larger(i);
+        }
+        
+
+    
+
+
+function check_if_larger (i2) {
+
+    if (a[i2] >  a[ x[0] ]) {
+        console.log("greater");
+        x[0] = i2;
+        console.log("x now is " + x);
+
+        /* starting position is highest at first count
+        so if */
+
+    }
+
+    else if ( (a[i2] == a[ x[0] ]) && (i2 !==0)  ) {
+
+        x.push(i2);
+        console.log("x now is " + x);
+
+        /*if equal in value */
+    }
+
+    else {
+        console.log("not greater");
+
+    }
+}
+
+console.log(x); /* highest score locations */
+console.log(a[x[0]]); /* highest score */
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/

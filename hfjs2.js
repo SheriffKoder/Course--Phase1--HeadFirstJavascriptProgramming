@@ -178,7 +178,7 @@ Math.random(); 0 - > 0.99
 
 /*/////////////////////////////////////////////////////////////////////////////*/
 /*
-124-130
+124-148
 
 function name (parameter) {
     body;
@@ -231,7 +231,7 @@ used only in the function
 //variable declared outside a function: global
 used anywhere in the code
 
-
+functions without return, has a value of undefined
 
 
 //variable shadows
@@ -239,6 +239,8 @@ used anywhere in the code
 will be global and used outside after the function's call
 and if duplicated without declaration will overwrite the global value
 but if name duplicated and declared, it will overwrite inside the function only
+//If you forget to declare a local variable using var, that variable will be global, which could have unintended consequences in your program
+so be aware, shadow can change the new parameter and not the global
 
 
 let z = 5;
@@ -255,7 +257,34 @@ local variables unless absolutely needed globals
 
 
 */
+/*/////////////////////////////////////////////////////////////////////////////*/
+/*
+
+ JavaScript creates
+all local variables at the beginning of a function whether you
+declare them or not (this is called “hoisting”
+
+you can put your functions anywhere in your JavaScript file.
+because js passes two times over code
+first pass, reads all the function definitions
+second pass, begins executing codes
+
+global variables, at top of code
+keep functions in one place 
+local variables at top of function
 
 
+function setup(width, height) {
+ centerX = width/2;
+ centerY = height/2;
+}
+ 
+computeDistance(x, y, centerX, centerY) {
+ var dx = x1 - x2;
+ var dy = y1 - y2;
+ var d2 = (dx * dx) + (dy * dy);
+ var d = Math.sqrt(d2);
+ return d;
+}
 
 

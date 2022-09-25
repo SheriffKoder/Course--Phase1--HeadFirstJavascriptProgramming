@@ -288,3 +288,30 @@ computeDistance(x, y, centerX, centerY) {
 }
 
 
+
+/* Arrays */ /*
+
+let array = []; //empty array, add later 
+
+let array = ['a', 'b', 'c']; // positions 0, 1, 2
+array[0]; // a
+array.length; // = 3 positions, one more than the last index
+
+var rand1 = Math.floor(Math.random() * words1.length);
+if length is 5, it creates 0->4 remember?, exact positions
+
+how many things in an array is determined by the memory of the computer
+can put objects in arrays
+
+[1, 2, “fido”, 4, 5]. 
+what happens when you check to see if “fido” is greater than 2 ? be aware
+try to keep types of values the same
+
+array[-1] or [length+x] undefined
+
+
+
+*/
+
+
+

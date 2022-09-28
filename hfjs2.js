@@ -310,8 +310,30 @@ try to keep types of values the same
 array[-1] or [length+x] undefined
 
 
+array = ['x','y'];
+array.push('z');
+now the array = ['x','y','z'];
+
+
+148-176
+*/
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+For loops
+
+for (;answer != "forty-two";)  same as while ( answer != "forty-two")
+
+i=i+1; same as i++;
+post increment operator
+
 
 */
 
+let i=1;
+for (; i<5; ) {
+    console.log(i++);
+}
 
 

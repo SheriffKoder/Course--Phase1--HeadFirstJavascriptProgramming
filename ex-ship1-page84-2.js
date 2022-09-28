@@ -170,5 +170,7 @@ function check_if_larger (i2) {
 console.log(x); /* highest score locations */
 console.log(a[x[0]]); /* highest score */
 
+/*approach2:  pass over to get high score, another separate pass on all scores to push if equal the high score */
+
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/

@@ -1,13 +1,6 @@
 //Exercise Ship1 - page 84-
 
 
-
-let hits = 0;
-let inputs = 0;
-let missout = 0;
-let ship_positions = [5,6];
-let ship_hits = [];
-let user_guess;
 //let guess_positions = Array(7);
 
 //console.log(ship_positions);

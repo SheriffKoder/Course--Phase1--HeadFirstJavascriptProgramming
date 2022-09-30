@@ -137,19 +137,20 @@ function check_if_put_before () {
 
 /////////////////////////check//
 let a = [ 11 , 11 , 2 , 11 ];
-let cost = [ 4 , 2 , 3 , 0 ];
+let cost = [ 4 , 2 , 6 , 0 ];
 let x = [0]; /* place to store highest value locations */
 
 
 /////////////////////////cost//
-let lowest_cost = 100;
+let highest_cost = 0;
+let lowest_cost;
 let best_scores_positions = x; //['1', '3', '5'];
 let lowest_cost_postition;
 
-
-
+        get_highest_cost();
         check_if_larger();
         determine_lowest_cost();
+
 
 
 
@@ -164,13 +165,22 @@ console.log("with cost " + lowest_cost);
 
 /*approach2:  pass over to get high score, another separate pass on all scores to push if equal the high score */
 
+    function get_highest_cost () {
+        for (i=0; i < cost.length; i++) {
+            if (cost[i] > highest_cost) {
+                highest_cost = cost[i];
+            }
+
+
+        }
+    }
 
     function determine_lowest_cost () {
         
         
         for (i=0; i<best_scores_positions.length; i++) {
         
-            if (cost[ best_scores_positions[i] ] < lowest_cost) {
+            if (cost[ best_scores_positions[i] ] < highest_cost) {
         
                 lowest_cost = cost[ best_scores_positions[i] ];
                 lowest_cost_postition = best_scores_positions[i];

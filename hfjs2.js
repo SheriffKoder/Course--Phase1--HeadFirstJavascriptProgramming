@@ -243,11 +243,11 @@ but if name duplicated and declared, it will overwrite inside the function only
 so be aware, shadow can change the new parameter and not the global
 
 
-let z = 5;
+//let z = 5;
 func();
 function func () {
-    z = 0;
-    //let z = 0;
+    z = 0; (first time undeclared mention becomes global )
+    //let z = 0; (shadow)
     z = 1+2;
 }
 console.log(z); // 3, 5
@@ -314,6 +314,11 @@ array = ['x','y'];
 array.push('z');
 now the array = ['x','y','z'];
 
+array = [];
+array[0] = 'a';
+array[100] = 'b';
+//this array has two values in it all other positions are undefined
+
 
 148-176
 */
@@ -323,17 +328,58 @@ now the array = ['x','y','z'];
 
 For loops
 
-for (;answer != "forty-two";)  same as while ( answer != "forty-two")
+for ( ;answer != "forty-two"; )  same as while ( answer != "forty-two")
 
 i=i+1; same as i++;
 post increment operator
 
 
+
+176-203
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+Arrays are a data structure for ordered data
+
+The while loop is most often used when
+you don’t know how many times you
+need to loop, and you’re looping until a
+condition is met.
+
+to get the last item in an array
+
+let i = array.length - 1 ;
+var recent = array [i];
+
+an undefined array is called, sparse array
+
+
+
+Objects
+make a list, 
+separate by comma
+{},
+put var name =
+
+make: chevy
+"make": chevy
+model: deville
+year: 1960
+color: red
+    
+
+
+
+
+
+
+
+
+
+
+
+
 */
 
-let i=1;
-for (; i<5; ) {
-    console.log(i++);
-}
 
 

@@ -10,11 +10,15 @@ let user_input; //user guess is undefined
 
 
 
-take_input();
+//take_input();
 console.log("Result");
 console.log("inputs" + inputs);
 console.log("hits" + hits);
 console.log("misses" + missout);
+
+
+
+
 
 
 
@@ -130,47 +134,85 @@ function check_if_put_before () {
 /*////////////////////////////////////////////////////////////////////*/
 /*Example bubbles */
 
+
+/////////////////////////check//
 let a = [ 11 , 11 , 2 , 11 ];
+let cost = [ 4 , 2 , 3 , 0 ];
 let x = [0]; /* place to store highest value locations */
 
-        for (i=0; i<a.length; i++) {
-            check_if_larger(i);
-        }
-        
 
-    
+/////////////////////////cost//
+let lowest_cost = 100;
+let best_scores_positions = x; //['1', '3', '5'];
+let lowest_cost_postition;
 
 
-function check_if_larger (i2) {
 
-    if (a[i2] >  a[ x[0] ]) {
-        console.log("greater");
-        x[0] = i2;
-        console.log("x now is " + x);
+        check_if_larger();
+        determine_lowest_cost();
 
-        /* starting position is highest at first count
-        so if */
 
-    }
 
-    else if ( (a[i2] == a[ x[0] ]) && (i2 !==0)  ) {
-
-        x.push(i2);
-        console.log("x now is " + x);
-
-        /*if equal in value */
-    }
-
-    else {
-        console.log("not greater");
-
-    }
-}
-
+/////////////////////////check//
 console.log(x); /* highest score locations */
 console.log(a[x[0]]); /* highest score */
 
+
+/////////////////////////cost//
+console.log("lowest cost is in score position "+ lowest_cost_postition);
+console.log("with cost " + lowest_cost);
+
 /*approach2:  pass over to get high score, another separate pass on all scores to push if equal the high score */
+
+
+    function determine_lowest_cost () {
+        
+        
+        for (i=0; i<best_scores_positions.length; i++) {
+        
+            if (cost[ best_scores_positions[i] ] < lowest_cost) {
+        
+                lowest_cost = cost[ best_scores_positions[i] ];
+                lowest_cost_postition = best_scores_positions[i];
+        
+            }
+            
+        
+        }
+    }
+        
+        
+
+
+    function check_if_larger () {
+
+        for (i=0; i<a.length; i++) {
+        
+            if (a[i] >  a[ x[0] ]) {
+                console.log("greater");
+                x[0] = i;
+                console.log("x now is " + x);
+
+                /* starting position is highest at first count
+                so if */
+
+            }
+
+            else if ( (a[i] == a[ x[0] ]) && (i !==0)  ) {
+
+                x.push(i);
+                console.log("x now is " + x);
+
+                /*if equal in value */
+            }
+
+            else {
+                console.log("not greater");
+
+            }
+        }
+    }
+
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/

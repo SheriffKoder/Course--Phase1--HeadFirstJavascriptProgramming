@@ -347,13 +347,15 @@ need to loop, and you’re looping until a
 condition is met.
 
 to get the last item in an array
-
 let i = array.length - 1 ;
 var recent = array [i];
 
 an undefined array is called, sparse array
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*220
 
 Objects
 make a list, 
@@ -367,19 +369,44 @@ model: deville
 year: 1960
 color: red
     
+let car = {
 
+make: "chevy"
+"make2": "chevy"
+model: "deville"
+year: "1960"
+color: "red"
 
+};
 
+accessing a property 
+car.make = "chevy";
+var brand = car.make;
 
+adding a new property
+car.needsWashing = true;
 
-
-
-
-
-
+removing a property
+delete car.needsWashing
 
 
 */
 
+  
+let car = {
 
+    make: "chevy",
+    "make2": "chevy",
+    model: "deville",
+    year: "1960",
+    color: "red",
+    
+    };
 
+console.log (car.make);
+
+car.needsWashing = true;
+console.log(car.needsWashing);
+
+delete car.needsWashing;
+console.log(car.needsWashing);

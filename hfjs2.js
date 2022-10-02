@@ -355,11 +355,11 @@ an undefined array is called, sparse array
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
-/*220
+/*
 
 Objects
 make a list, 
-separate by comma
+separate by comma (the last comma is unsupported in old browsers)
 {},
 put var name =
 
@@ -381,32 +381,148 @@ color: "red"
 
 accessing a property 
 car.make = "chevy";
+car["make"] = "chevy"
+car["ma"+"ke"] = "chevy"
 var brand = car.make;
+
+
 
 adding a new property
 car.needsWashing = true;
 
 removing a property
 delete car.needsWashing
+removes the property and its value
+(returns true wether its in the object or not, only if protected will return false 
+
+variables given names hold a reference/pointer to the object's address
+var object // object in #2919
+reference value
+
+
+
+in functions we pass a copy of value for vars 
+but here pass a copy of the reference 
+in vars changes happen to the parameter
+but here any changes do happen to the original object
+function FUN ( object_input ) {
+
+    if (object_input.answer == true ) {
+
+    }
+
+}
+
+//Example//
+function makecar () {
+    var brand = ["Chevy", "GM", "Fiat", "Webville Motors", "Tucker"];
+    
+    var rand1 = Math.floor(Math.random() * brand.length );
+
+    var car = {
+        brand: brand[rand1],  //each function call it creates a different brand
+    };
+
+    return car;
+}
+
+var rand5 = Math.floor(Math.random() * 5) + 1;
+//to have from 1 to 5 instead of 0 to 4
+
+
+
+// Object functions //
+// letting an object worry about how it gets things done.
+let car = {
+
+            advice: ["yes", "no", "maybe", "not a chance"],
+
+            drive:  function () { //name of function/method is the name of the property
+                                if (this.keyOn) {
+                                    alert.log("zoom zoom");
+                                }
+                    },
+
+            start: function () {
+                        this.keyOn = true;   
+                    },
+
+            //use the object property with referring to the object by this.
+                    
+            stop: function (parameter) {
+                    this.keyOn = false;
+                    this.output = parameter + this.advice.length;
+                    //output value is changed every function call
+                    this.restart();
+                    },
+
+
+};
+
+accessing a property function, called method
+outside object > car.drive();
+inside object > this.drive();
+
+}
+
+220-242
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+
+//looping through each prop/property in chevy/object
+for (var prop in chevy) {
+    console.log (prop + ": " + chevy[prop]);
+}
+
+>> code looking like this
+fiat.addFuel(2);
+fiat.start();  to make drive work
+fiat.drive(); fuel-- , works relevant to fuel
+fiat.drive(); fuel-- , works relevant to fuel
+fiat.addFuel(2);
+fiat.drive(); fuel-- , works relevant to fuel
+fiat.drive(); fuel-- , works relevant to fuel
+fiat.stop();   drive condition not met, not work
+
+
+with JSON you can exchange javascript objects with other applications
+
+built in objects: Date, Math, RegExp(patterns in strings), Document, Window, Console 
+
+
+
+242-254
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+
+
+
 
 
 */
 
-  
-let car = {
+var song = {
+    name: "Walk This Way",
+    artist: "Run-D.M.C.",
+    minutes: 4,
+    seconds: 3,
+    genre: "80s",
+    playing: false,
+    play:   function() {
+                console.log(this.seconds);
+                this.seconds--;
+            },
 
-    make: "chevy",
-    "make2": "chevy",
-    model: "deville",
-    year: "1960",
-    color: "red",
-    
-    };
-
-console.log (car.make);
-
-car.needsWashing = true;
-console.log(car.needsWashing);
-
-delete car.needsWashing;
-console.log(car.needsWashing);
+    pause: function() {
+                if (this.playing) {
+                this.playing = false;
+                }
+            }
+   };
+   song.play();
+   song.play();
+   song.play();

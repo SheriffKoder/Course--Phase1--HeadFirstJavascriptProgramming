@@ -387,7 +387,7 @@ var brand = car.make;
 
 
 
-adding a new property
+adding a new property any place inside the code
 car.needsWashing = true;
 
 removing a property
@@ -463,7 +463,8 @@ accessing a property function, called method
 outside object > car.drive();
 inside object > this.drive();
 
-}
+this. is a keyword
+
 
 220-242
 /*////////////////////////////////////////////////////////////////////*/
@@ -491,17 +492,58 @@ with JSON you can exchange javascript objects with other applications
 
 built in objects: Date, Math, RegExp(patterns in strings), Document, Window, Console 
 
-
+console.log();
+document.getElementById
+access.innerHTML
+object.method();
 
 242-254
 /*////////////////////////////////////////////////////////////////////*/
 /*
 
+var element_1 = document.getElementById("code9");
+var code = element_1.innerHTML;
+code = code + "text string";
+
+document > represents the entire page in browser and contains the complete DOM
+ask the document to
+
+the web page is a "Data structure"
+js can access, read, change content or structure of the page
 
 
+page load, it creates the objects that represent the markup
+these objects are stored in the DOM
+javascript interact with the DOM to get access to the elements
+and browser updates dynamically
 
 
+> getElementById
+grab an element from the dom, return the element object that has that id
+if element not exist it returns null
 
+
+change/read/add/remove attribute, change content, get content
+
+getElementsByClassName
+getElementsByTagName // p , div etc
+returns collection of elements
+
+add the code/script tag at the end of the html page
+to execute the code only after the page is fully loaded
+
+The window object will call any function you’ve
+assigned to its onload property(event), but only after the page is fully loaded
+//not calling the function; just assigning the function value to the window.onload property.
+
+
+callback, also known as an event handler
+ 
+function to object knows about event
+  call function       <    object notified and call             <  occurs 
+
+
+-294
 
 */
 

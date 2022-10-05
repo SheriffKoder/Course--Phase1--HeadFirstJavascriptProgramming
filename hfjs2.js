@@ -546,25 +546,57 @@ function to object knows about event
 -294
 
 */
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
-var song = {
-    name: "Walk This Way",
-    artist: "Run-D.M.C.",
-    minutes: 4,
-    seconds: 3,
-    genre: "80s",
-    playing: false,
-    play:   function() {
-                console.log(this.seconds);
-                this.seconds--;
-            },
 
-    pause: function() {
-                if (this.playing) {
-                this.playing = false;
-                }
-            }
-   };
-   song.play();
-   song.play();
-   song.play();
+
+
+
+*/
+
+let planet = document.createElement("div");
+
+//planet.setAttribute("class", "redtext");
+//if the attribute doesn't exist a new one will be created in the element
+
+let class2 = planet.getAttribute("class");
+//if attribute does not exist, null is returned
+
+
+
+//can create, add, remove, move in elements in the dom
+
+//objects supplied by JS like Math.Object
+//objects supplied by the browser like document object
+
+//check variable/array etc. declaration with undefined, handy
+// typeof (undefined);  // undefined
+// typeof (Array)       // object
+// let value = null;    
+// typeof(null)         //object
+
+//undefined, not defined yet
+//null, doesn't exist yet
+
+//if ( x == undefined ) { get the customer number }
+//if (weather != null)  { create content} 
+
+// NaN != NaN, typeof(NaN) is number
+// but NaN as its not a value, use if (isNaN(myNumber) ) //true/false
+//NaN is a number cannot be represented 
+
+
+var a = 0/0; //NaN but 10/0 is infinity (exceed upper limit on computer floating point numbers)
+a = "food" * 1000; //NaN
+var c = Math.sqrt(-9); //NaN
+    console.log(c);
+let d = Infinity - Infinity; //NaN
+let e = Infinity + Infinity; //Infinity
+
+console.log(d);
+
+
+if (99 == "99") {
+    console.log("number equals a string");
+}

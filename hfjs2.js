@@ -543,7 +543,7 @@ function to object knows about event
   call function       <    object notified and call             <  occurs 
 
 
--294
+p294
 
 */
 /*////////////////////////////////////////////////////////////////////*/
@@ -577,7 +577,7 @@ let class2 = planet.getAttribute("class");
 // typeof(null)         //object
 
 //undefined, not defined yet
-//null, doesn't exist yet
+//null definition, doesn't exist yet
 
 //if ( x == undefined ) { get the customer number }
 //if (weather != null)  { create content} 
@@ -597,6 +597,48 @@ let e = Infinity + Infinity; //Infinity
 console.log(d);
 
 
+
+//// equality ////
 if (99 == "99") {
-    console.log("number equals a string");
+    console.log("number equals a string"); 
+}
+//JavaScript converts the string to a number (if possible).
+//and then tries the comparison again, 
+
+//when you compare different values that have different types
+//javascript will convert one type in order to compare them
+
+// 99 == "vanilla" , vanilla converted to NaN
+// 11 == true , true converted to number
+
+// "1" == true , string to boolean
+// "1" == 1, boolean is converted to 1
+// 1 == 1,  then string is converted to 1
+// true, then comparison happens
+
+// undefined == null // both values represent "no value"
+
+// empty string equates to 0 
+// 1 == "", // equates to 1 == 0 false
+
+//"true" == true;       //false
+//true === (1 == "1")   //true
+//true === (1 === "1")  //false
+
+
+//// strict equality ////
+/*
+two values have the same "type" and the same "value"
+
+
+
+
+
+//p321
+
+/*////////////////////////////////////////////////////////////////////*/
+
+
+if ( true == (1 == "1") ) {
+    console.log("Hello world");
 }

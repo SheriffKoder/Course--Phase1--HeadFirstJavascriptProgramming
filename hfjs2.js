@@ -473,8 +473,8 @@ this. is a keyword
 
 
 //looping through each prop/property in chevy/object
-for (var prop in chevy) {
-    console.log (prop + ": " + chevy[prop]);
+for (var prop in objectX) {
+    console.log (prop + ": " + objectX[prop]);
 }
 
 >> code looking like this
@@ -534,7 +534,8 @@ to execute the code only after the page is fully loaded
 
 The window object will call any function you’ve
 assigned to its onload property(event), but only after the page is fully loaded
-//not calling the function; just assigning the function value to the window.onload property.
+//not calling the function; just assigning the function value 
+to the window.onload property.
 
 
 callback, also known as an event handler
@@ -553,7 +554,7 @@ p294
 
 
 
-*/
+
 
 let planet = document.createElement("div");
 
@@ -619,11 +620,22 @@ if (99 == "99") {
 // undefined == null // both values represent "no value"
 
 // empty string equates to 0 
-// 1 == "", // equates to 1 == 0 false
+// 1 == "", // equates to 1 == 0 //false
 
 //"true" == true;       //false
 //true === (1 == "1")   //true
-//true === (1 === "1")  //false
+//true === (1 === "1")  //false because 2nd condition is false, not strictly equal
+//( true == (1.2 == "1.2") )
+
+// 99 <= "100"      //true
+// 0 < true         //true converted to 1
+// !== and !===     are correct
+
+
+//as we compare letter strings with unicode
+// "b" is smaller than "m"
+//if first letters are equal move to next letter for comparison
+
 
 
 //// strict equality ////
@@ -631,14 +643,30 @@ if (99 == "99") {
 two values have the same "type" and the same "value"
 
 
+var addition = 1 + "3";
+// equals 13, number converted to string
+//but in other operations, strings are converted to numbers like equality
 
+var order = 1 + 2 + "pizzas"; 
+//12pizzas because operation from left to right
+
+// -true is -1
+true + "hey";       // truehey
+
+//
 
 
 //p321
 
 /*////////////////////////////////////////////////////////////////////*/
 
+let x21s = "1" - "1"    ;
 
-if ( true == (1 == "1") ) {
-    console.log("Hello world");
-}
+    console.log( x21s           );
+
+
+
+// "ban" < "man" m is higher than b so 2st wins
+// "ban" < "bbn"
+
+// ====

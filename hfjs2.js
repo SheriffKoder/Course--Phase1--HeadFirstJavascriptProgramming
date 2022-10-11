@@ -571,6 +571,14 @@ let class2 = planet.getAttribute("class");
 //objects supplied by JS like Math.Object
 //objects supplied by the browser like document object
 
+// undefined
+returned from a function when there is no return statement.
+variable haven't been assigned a value
+array item value that doesn't exist in a sparse array
+value of a property that doesn't exist or deleted
+value that can't be assigned to a property when create an object
+
+
 //check variable/array etc. declaration with undefined, handy
 // typeof (undefined);  // undefined
 // typeof (Array)       // object
@@ -588,12 +596,13 @@ let class2 = planet.getAttribute("class");
 //NaN is a number cannot be represented 
 
 
-var a = 0/0; //NaN but 10/0 is infinity (exceed upper limit on computer floating point numbers)
-a = "food" * 1000; //NaN
-var c = Math.sqrt(-9); //NaN
-    console.log(c);
-let d = Infinity - Infinity; //NaN
-let e = Infinity + Infinity; //Infinity
+var a = 0/0; //NaN 
+var b = 10/0 is infinity (exceed upper limit on computer floating point numbers)
+var c = "food" * 1000; //NaN
+var d = Math.sqrt(-9); //NaN
+
+let e = Infinity - Infinity; //NaN
+let f = Infinity + Infinity; //Infinity
 
 console.log(d);
 
@@ -618,6 +627,7 @@ if (99 == "99") {
 // true, then comparison happens
 
 // undefined == null // both values represent "no value"
+// null != null
 
 // empty string equates to 0 
 // 1 == "", // equates to 1 == 0 //false
@@ -625,7 +635,7 @@ if (99 == "99") {
 //"true" == true;       //false
 //true === (1 == "1")   //true
 //true === (1 === "1")  //false because 2nd condition is false, not strictly equal
-//( true == (1.2 == "1.2") )
+// (1.2 == "1.2")       //true, float comparison
 
 // 99 <= "100"      //true
 // 0 < true         //true converted to 1
@@ -637,6 +647,7 @@ if (99 == "99") {
 //if first letters are equal move to next letter for comparison
 
 
+//p321
 
 //// strict equality ////
 /*
@@ -648,25 +659,151 @@ var addition = 1 + "3";
 //but in other operations, strings are converted to numbers like equality
 
 var order = 1 + 2 + "pizzas"; 
-//12pizzas because operation from left to right
+//3pizzas because operation from left to right
 
 // -true is -1
 true + "hey";       // truehey
 
-//
+//object == object       // equality look for reference, remember ?
+//so when changing an object value, we are changing its reference, like what happened in resetting clever prog cards
 
 
-//p321
+
+//truthy and falsely//
+
+//quite false examples yet cause no errors
+var testThis; //undefined
+var testThis = document.getElementById("elementNotExist"); //null
+
+if (testThis) //null or undefined 
+if (0)
+if ("")
+if (NaN)
+
+//null,undefined, 0, nothing, NaN .. otherwise is quite true
+//i.e run and cause no error
+
+if ([])
+if (1)
+if (string)
+
+
+
+
+/////////////////////////////////
+//p336
+
+vars are permeative
+objects have states and behaviors / properties and methods
+string are permeative and can be an object when called in a string-method
+
+
+ for(var i = 0; i < input.length; i++) {
+ if (input.charAt(i) === "@") {             //at location
+
+
+ var phrase = "the cat in the hat";
+var index = phrase.indexOf("cat, 0");       // location of, starting 0
+//returns -1 if not found
+
+
+var val = data.substring(5, 10); //returns string between 5 and 9
+var val = data.substring(5);     //returns string from 5 onwards
+
+let string = "we,are,here"
+let new_String  = string.split(",");      //returns an array of the string splits
+console.log(new_String);
+result = ["we", "are" , "here"];
+
+
+    let string = "we,are,here"
+    let new_String  = string.split(",");      //returns an array of the string splits
+    console.log("the result" , new_String); // comma to keep it an array not string
+
+text.toLowerCase();
+text.lastIndexOf("text");
+text.replace("text");
+console.log(text.slice(1,3)); //takes out from 1 to 2
+
+
+let numX = "123-4567";
+
+if ( numX.length !=8|| isNaN(numX.slice(0,3)) || numX.charAt(3)!="-"  || isNaN(numX.slice(4,8))      ) {
+    console.log("not accepted");
+}
+else {
+    console.log("input accepted");
+
+}
+
+
+//primitives are numbers, string, boolean and undefined
+//anything else is an object
+
+typeof typeofs
+var test1 = "abcdef"; //string
+var test2 = 123; //number
+var test3 = true; //boolean
+var test4 = {}; //object
+var test5 = []; //object
+var test6; //undefined
+var test7 = {"abcdef": 123}; //object
+var test8 = ["abcdef", 123]; //object
+function test9(x){return "abcdef"}; //function
+var test10 = new test9(x); //object
+var test10 = null; //object
+
+//null means no object
+//expecting an object and this object does not exist
+
+//p358
+
 
 /*////////////////////////////////////////////////////////////////////*/
 
 let x21s = "1" - "1"    ;
+var testThis = document.getElementById("elementNotExist");
 
-    console.log( x21s           );
+    if ("hey") {
+        console.log( "ok");
+
+    }
+    else {
+        console.log( "not ok");
+
+    }
+
+let text = "there is no pain without gan";
+//console.log(text.slice(1,3)); //takes out from 1 to 2
 
 
 
-// "ban" < "man" m is higher than b so 2st wins
-// "ban" < "bbn"
+
+
+
 
 // ====
+
+
+/*
+
+
+function Duck (sound) {
+
+    this.sound = sound;
+    this.quack = function () {
+                    console.log(this.sound);
+                }
+}
+
+
+var toy = new Duck ("quack"); // new copy of Duck is named accessed by the name toy
+console.log (typeof toy); //object !!
+console.log (toy instanceof Duck); //true
+
+console.log(Duck.sound); //undefined
+console.log(toy.sound); //quack
+
+
+
+*/

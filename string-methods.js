@@ -32,3 +32,22 @@ let y = 20;
 let text = "x + y";
 let result = eval(text);
 
+
+//// //// //// //// //// ////
+//match() returns number of occurances
+
+let text = " here we are here";
+let result = text.match(/ere/g); //search global or gi case-insenstive
+console.log(result);
+
+//// //// //// //// //// ////
+
+str1.padEnd(25, '.');
+// expected output: "Breaded Mushrooms........"
+
+console.log(str2.padEnd(5);
+// expected output: "  200" total string length is 5, spaces placed by default
+
+//// //// //// //// //// ////
+
+let new_text = text.repeat(2); //returns the text repeated n times

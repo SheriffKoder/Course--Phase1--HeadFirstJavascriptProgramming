@@ -99,8 +99,34 @@ var model = {
 
     },
 
+    ///(1)
+    isSunk : function (ship) {
+
+        for (var i=0; i<this.shipLength; i++) {
+            if (ship.hits[i] !== "hit") {
+                return false; //if any location not hit, ship is not sunk
+            }
+        }
+        return true;    //all locations hit, then isSunk == true
+    }
+
+
 } //end of model object
 
 
+model.fire("42");
 
 
+
+//////////////////////////////////////////////////////////
+//the controller glues everything together and gives and watches states
+
+var controller = {
+
+    guesses: 0,
+
+    processGuess: function (guess) {
+        //
+    }
+
+};

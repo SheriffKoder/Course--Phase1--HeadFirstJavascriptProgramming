@@ -28,4 +28,79 @@ var view = {
 view.displayMiss("00");
 view.displayHit("01");
 
+//////////////////////////////////////////////////////////
+/* then we can look it all up and make it by ourselves */
+
+var model = {
+
+    boardSize : 7,
+    numShips: 3,
+    shipLength: 3,
+    shipsSunk: 0,
+
+
+//add other values and nest ships with them in an object
+//add 3 ships then combine into a single 0,1,2 array
+    ships : [
+    {
+        locations: ["10", "20", "30"],
+        hits: ["", "", ""]
+    },
+
+    {
+        locations: ["32", "33", "34"],
+        hits: ["", "", ""]
+    },
+
+    {
+        locations: ["63", "64", "65"],
+        hits: ["", "", ""]
+    },
+
+    ],
+
+
+    fire: function(guess) {
+
+        for (var i=0; i < this.numShips; i++) {
+            var ship = this.ships[i];
+
+            /*
+            var locations = ship.locations;
+            var index = locations.indexOf(guess); //if there isn't a matching location will return a value of -1
+            */
+            var index = ship.locations.indexOf(guess); //combined the prev 2 lines, called chaining, keeps code short but use to chain 2-3 levels most to readability
+
+            if (index >= 0) {
+                //we have a hit
+                ship.hits[index] = "hit";
+
+                ////(2)
+                view.displayHit(guess);
+                view.displayMessage("HIT");
+
+                ///(1)
+                if (this.isSunk(ship)) {
+
+                    this.shipsSunk++;
+                    ////(2)
+                    view.displayMessage("you sank my battleship!");
+                }
+
+                return true;
+            }
+        }
+
+        ////(2)
+        view.displayMiss(guess);
+        view.displayMessage("you missed");
+
+        return false; //if passed through all ships and no hit
+
+    },
+
+} //end of model object
+
+
+
 

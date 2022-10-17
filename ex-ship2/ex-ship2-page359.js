@@ -110,7 +110,54 @@ var model = {
             }
         }
         return true;    //all locations hit, then isSunk == true
-    }
+    },
+
+/*////////////////////////////////////////////////////////////////////*/
+
+    generateShipLocations: function () {
+
+        var locations;
+        for (var i=0; i < this.numShips; i++) {
+            //ship0,ship1,ship2
+
+            do {
+                locations = this.generateShip();
+
+
+            } while (TouchList.collision(locations));
+
+
+        }
+
+    },
+
+
+    generateShip : function () {
+
+        var direction = Math.floor(Math.random() * 2 );
+        var row, col;
+
+        if (direction === 1) {
+            //generate horizontal ship
+        }
+
+        else {
+            //generate vertical ship
+        }
+
+        var newShipLocations = [];
+        for (var i=0; i< this.shipLength; i++) {
+            if (direction === 1) {
+                //add location array for the horizontal ship
+            }
+    
+            else {
+                //add location array for the vertical ship
+            }
+    
+        }
+
+    },
 
 
 }; //end of model object
@@ -189,40 +236,49 @@ var controller = {
 controller.processGuess("D0");
 
 
-/* start function */
-function init() {
-    var fireButton = document.getElementById("fireButton");
-    fireButton.onclick = handleFireButton; // no ()
 
-    var guessInput = document.getElementById("guessInput");
-    guessInput.onkeypress = handleKeyPress;
+//////////////////////////////////////////////////////////
+/* initial acts as a start button, deals with Html */
 
+let initial = {
 
-
-}
-
-/* ENTER initialize start function */
-function handleKeyPress (passedKey) {
-
-    var fireButton = document.getElementById("fireButton");
-
-    if (passedKey.keyCode === 13 ) {
-        fireButton.click();
-        return false;
-    }
-
-}
-
-/* get guess and push to controller */
-function handleFireButton () {
-
-    var guessInput = document.getElementById("guessInput");
-    var guess = guessInput.value;
-    controller.processGuess(guess);
-
-    guessInput.value = ""; //resets the input element
+    /* start function */
+    init: function () {
+        var fireButton = document.getElementById("fireButton");
+        fireButton.onclick = this.handleFireButton; // no ()
+    
+        var guessInput = document.getElementById("guessInput");
+        guessInput.onkeypress = this.handleKeyPress;
+    
+    },
 
 
-}
+    /* ENTER initialize start function */
+    handleKeyPress: function (passedKey) {
+        var fireButton = document.getElementById("fireButton");
 
-init();
+        if (passedKey.keyCode === 13 ) {
+            fireButton.click();
+            return false;
+        }
+    
+    },
+
+    /* get guess and push to controller */
+    handleFireButton : function () {
+        var guessInput = document.getElementById("guessInput");
+        var guess = guessInput.value;
+        controller.processGuess(guess);
+    
+        guessInput.value = ""; //resets the input element
+    
+    },
+
+
+
+
+}; //end of initial object
+
+
+
+initial.init();

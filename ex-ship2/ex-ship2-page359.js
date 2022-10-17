@@ -111,7 +111,7 @@ var model = {
     }
 
 
-} //end of model object
+}; //end of model object
 
 
 model.fire("42");
@@ -125,8 +125,52 @@ var controller = {
 
     guesses: 0,
 
-    processGuess: function (guess) {
-        //
+    parseGuess: function (guess) {
+
+        var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+
+        /* null and length check */
+        if (guess === null || guess.length !== 2) {
+            alert("Oops, please enter a letter and a number on the board.");
+        } 
+
+        else { /* else cont. on processing the input */
+            firstChar = guess.charAt(0); //get first char from guess
+            var row = alphabet.indexOf(firstChar); //location in alphabet
+            var column = guess.charAt(1);
+
+
+            /* NaN and range check */
+            if (isNaN(row) || isNaN(column)) {
+                alert ("that isnt' on the board");
+            } 
+            else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+                alert ("that is outside the board");
+            }
+            else {
+                return row + column; //returns a string
+            }
+
+
+        }
+
+        return null;
+
+
+
+    },
+
+    processGuess: function () {
+
+        var location = this.parseGuess(guess);
+        if (location) {  //null is a falsey value
+
+        }
+
+
     }
 
-};
+}; //end of controller object
+
+
+console.log(controller.processGuess("H0"));

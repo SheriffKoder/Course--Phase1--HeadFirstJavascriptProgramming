@@ -25,8 +25,8 @@ var view = {
 };
 
 //test display functions
-view.displayMiss("00");
-view.displayHit("01");
+//view.displayMiss("00");
+//view.displayHit("01");
 
 //////////////////////////////////////////////////////////
 /* then we can look it all up and make it by ourselves */
@@ -61,6 +61,8 @@ var model = {
 
 
     fire: function(guess) {
+
+        console.log(guess);
 
         for (var i=0; i < this.numShips; i++) {
             var ship = this.ships[i];
@@ -114,7 +116,7 @@ var model = {
 }; //end of model object
 
 
-model.fire("42");
+//model.fire("42");
 
 
 
@@ -125,6 +127,8 @@ var controller = {
 
     guesses: 0,
 
+
+    /* output a number string */
     parseGuess: function (guess) {
 
         var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
@@ -160,12 +164,20 @@ var controller = {
 
     },
 
-    processGuess: function () {
+    /* take guess, increase var_guess, put into fire method */
+    processGuess: function (guess) {
 
         var location = this.parseGuess(guess);
         if (location) {  //null is a falsey value
+            this.guesses++;
+            var hit = model.fire(location);
+
+            if (hit && model.shipsSunk === model.numShips) {
+                view.displayMessage("You sank all battleships, in " + this.guesses + " guesses");
+            }
 
         }
+        
 
 
     }
@@ -173,4 +185,44 @@ var controller = {
 }; //end of controller object
 
 
-console.log(controller.processGuess("H0"));
+
+controller.processGuess("D0");
+
+
+/* start function */
+function init() {
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton; // no ()
+
+    var guessInput = document.getElementById("guessInput");
+    guessInput.onkeypress = handleKeyPress;
+
+
+
+}
+
+/* ENTER initialize start function */
+function handleKeyPress (passedKey) {
+
+    var fireButton = document.getElementById("fireButton");
+
+    if (passedKey.keyCode === 13 ) {
+        fireButton.click();
+        return false;
+    }
+
+}
+
+/* get guess and push to controller */
+function handleFireButton () {
+
+    var guessInput = document.getElementById("guessInput");
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+
+    guessInput.value = ""; //resets the input element
+
+
+}
+
+init();

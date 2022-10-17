@@ -16,9 +16,15 @@ background: url("board.jpeg") no-repeat;
 
 div#messageArea {
 position: absolute;
-top: 0px;
-left: 0px;
-color: rgb(83, 175, 19);
+top: 5%;
+left: 50%;
+color: rgb(235, 255, 220);
+letter-spacing: 0.5em;
+
+height: 20px;
+width: 50px;
+background: rgba(0, 255, 106, 0.509);
+
 }
 
 

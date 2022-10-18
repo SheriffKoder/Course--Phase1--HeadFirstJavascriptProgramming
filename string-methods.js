@@ -69,10 +69,44 @@ console.log(result2);
 /* returns new string with all matches of pattern/string/RegExp
 */
 
-p = "quickly jump over the box of the box";
+//p = "quickly jump over the box of the box";
 
-console.log ( p.replaceAll('box','box2') ); 
+//console.log ( p.replaceAll('box','box2') ); 
 
-console.log ( p.replace('box','box2') );  //first occurrence only
+//console.log ( p.replace('box','box2') );  //first occurrence only
 
-console.log ( p.search("ui"));  //search begining of string
+//console.log ( p.search("ui"));  //search beginning of string
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+//takes a string and output a string
+//let string2 = string.valueOf();
+
+//let text = String.fromCharCode(65);   //outputs A
+//let result = text.includes("world"); //returns true if found
+
+/*////////////////////////////////////////////////////////////////////*/
+
+/*prototype adds a new property to an object on the fly 
+object.prototype.name = value
+*/
+
+function Person (first, last, eye) {
+
+    this.firstname = first;
+    this.lastname = last;
+    this.eyecolor = eye;
+}
+
+Person.prototype.nationality;
+
+
+const myFather = new Person ("john", "doe", "blue");
+
+myFather.nationality = "english";
+console.log(myFather.eyecolor);
+
+/*new Function local variables = const */

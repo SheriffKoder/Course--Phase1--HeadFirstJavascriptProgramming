@@ -735,6 +735,7 @@ else {
     console.log("input accepted");
 
 }
+//split - , isNaN
 
 
 //primitives are numbers, string, boolean and undefined
@@ -758,9 +759,7 @@ var test10 = null; //object
 
 //p358
 
-
-/*////////////////////////////////////////////////////////////////////*/
-
+/*
 let x21s = "1" - "1"    ;
 var testThis = document.getElementById("elementNotExist");
 
@@ -777,12 +776,44 @@ let text = "there is no pain without gan";
 //console.log(text.slice(1,3)); //takes out from 1 to 2
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+/* 
+Whenever there’s an event, there is an opportunity to handle it.
+
+page loaded
+track of clicks
+form submts
+keyboard presses
+focus
+mouse movement
+clock, timers, timed events
+additional data retrieve
+page resized or scrolled
+
+when an event occurs, its handler function is called
+
+
+*/
+
+function pageLoadedHandler () {
+
+    console.log("im here");
+
+}
+
+window.onload = pageLoadedHandler;
 
 
 
 
 
-// ====
+
+
 
 
 /*
@@ -803,6 +834,30 @@ console.log (toy instanceof Duck); //true
 
 console.log(Duck.sound); //undefined
 console.log(toy.sound); //quack
+
+/////////////////////////////////////////
+
+/*prototype adds a new property to an object on the fly 
+object.prototype.name = value
+*/
+
+function Person (first, last, eye) {
+
+    this.firstname = first;
+    this.lastname = last;
+    this.eyecolor = eye;
+}
+
+Person.prototype.nationality;
+
+
+const myFather = new Person ("john", "doe", "blue");
+
+myFather.nationality = "english";
+console.log(myFather.eyecolor);
+
+/*new Function local variables = const */
+
 
 
 

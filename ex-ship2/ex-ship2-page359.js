@@ -315,3 +315,16 @@ let initial = {
 
 
 initial.init();
+
+
+/*
+
+By designing the game with objects that each have a separate 
+responsibility, we can build and test each part of the game independently.
+
+Methods used in this project:
+
+ship[i].locations.indexof(locations[j]);
+
+*/
+

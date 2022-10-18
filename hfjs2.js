@@ -815,7 +815,8 @@ order of defining functions in js does not matter
 
 image.src = "";     //set new source
 image.onclick = showAnswer;
-
+image.onmouseover
+image.onload
 
 
 
@@ -872,7 +873,28 @@ function showAnswer (para) {
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 
+/* on-click get the event's eventObj/para -  x/y coordinates */
+window.onload = init1810;
 
+function init1810 () {
+
+    var map = document.getElementById("map");
+    map.onclick = showCoords;
+
+}
+
+function showCoords (para) {
+    var mapText = document.getElementById("coords");
+
+    var x1810 =  para.clientX;
+    var y1810 =  para.clientY;
+
+    mapText.innerHTML = "Map coordinates: " + x1810 + " , " + y1810;
+
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
 
 
 

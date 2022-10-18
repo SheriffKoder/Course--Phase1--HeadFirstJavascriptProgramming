@@ -785,28 +785,93 @@ let text = "there is no pain without gan";
 /* 
 Whenever there’s an event, there is an opportunity to handle it.
 
+kinds of events:
 page loaded
 track of clicks
-form submts
+form submits
 keyboard presses
 focus
 mouse movement
 clock, timers, timed events
 additional data retrieve
 page resized or scrolled
+network based events
+timer events
+
+timeStamp
+touches
+
+mouse click, 
+clientX, clientY > browser window
+screenX, screenY > user's screen
+pageX, pageY     > browser's page 
+
+
 
 when an event occurs, its handler function is called
+
+order of defining functions in js does not matter
+
+
+image.src = "";     //set new source
+image.onclick = showAnswer;
+
+
 
 
 */
 
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/* call all images, access the one clicked and unblur*/
+
+//window.onload = pageLoadedHandler;
+
 function pageLoadedHandler () {
 
-    console.log("im here");
+    var image = document.getElementsByTagName("img");
+
+    console.log(image[0].id);
+
+    for (let i=0; i<image.length; i++) {
+    
+        image[i].setAttribute("class", "blur");
+        image[i].onclick = showAnswer;
+
+    }
 
 }
 
-window.onload = pageLoadedHandler;
+//returns a nodeList(DOM Object), similar to an array, 
+//the object that represents the image in the DOM
+//is document.getElementbyId() same as the nodeList[0]
+
+//event object is passed to the click handler
+//what element, what time, 
+
+//tag name nodeList(DOM Object), event function para.target, direct.setattribute
+
+//queue of events, so keep them short and efficient for speed
+
+
+
+function showAnswer (para) {
+    console.log("im here");
+    //console.log(para.target.id);
+
+    //var image = document.getElementById("zero");
+    let image = para.target;
+    //newSrc = id + "jpg";
+
+    image.setAttribute("class", "unblur");
+    image.onclick = pageLoadedHandler;
+
+
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
 
 
 
@@ -861,4 +926,3 @@ console.log(myFather.eyecolor);
 
 
 
-*/

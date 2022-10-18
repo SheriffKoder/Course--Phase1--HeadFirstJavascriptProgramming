@@ -90,23 +90,3 @@ console.log(result2);
 
 /*////////////////////////////////////////////////////////////////////*/
 
-/*prototype adds a new property to an object on the fly 
-object.prototype.name = value
-*/
-
-function Person (first, last, eye) {
-
-    this.firstname = first;
-    this.lastname = last;
-    this.eyecolor = eye;
-}
-
-Person.prototype.nationality;
-
-
-const myFather = new Person ("john", "doe", "blue");
-
-myFather.nationality = "english";
-console.log(myFather.eyecolor);
-
-/*new Function local variables = const */

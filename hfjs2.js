@@ -897,6 +897,31 @@ function showCoords (para) {
 /*////////////////////////////////////////////////////////////////////*/
 
 
+/* stopwatch using "setTimeout" and repeating function with setInterval */
+let counter = 0;
+
+function timerHandler () {
+    console.log("Heeeey ! time up");
+    counter++;
+    console.log(counter);
+
+    if ( counter >= 5 )  {
+
+        clearInterval(intervalReturnedObject);
+    
+    }
+    
+
+}
+
+//setTimeout(timerHandler, 1000); //stop watch
+//a reference to a function (timerHandler) passed to another function (setTimeout)
+
+let intervalReturnedObject = setInterval(timerHandler, 1000); //every 1000ms, call the function
+//clearInterval(intervalReturnedObject); //stops the interval timer
+ 
+
+
 
 
 

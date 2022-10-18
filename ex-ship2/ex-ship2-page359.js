@@ -43,17 +43,17 @@ var model = {
 //add 3 ships then combine into a single 0,1,2 array
     ships : [
     {
-        locations: ["10", "20", "30"],
+        locations: ["00", "00", "00"], /* locations: ["10", "20", "30"], */
         hits: ["", "", ""]
     },
 
     {
-        locations: ["32", "33", "34"],
+        locations: ["00", "00", "00"], /* locations: ["32", "33", "34"]*/
         hits: ["", "", ""]
     },
 
     {
-        locations: ["63", "64", "65"],
+        locations: ["00", "00", "00"], /* locations: ["63", "64", "65"], */
         hits: ["", "", ""]
     },
 
@@ -124,9 +124,9 @@ var model = {
                 locations = this.generateShip();
 
 
-            } while (TouchList.collision(locations));
+            } while (this.collision(locations));
 
-
+            this.ships[i].locations = locations;
         }
 
     },
@@ -139,23 +139,53 @@ var model = {
 
         if (direction === 1) {
             //generate horizontal ship
+            row = Math.floor(Math.random() * this.boardSize);
+            col = Math.floor(Math.random() * (this.boardSize - this.shipLength) );
         }
 
         else {
             //generate vertical ship
+            row = Math.floor(Math.random() * (this.boardSize - this.shipLength) );
+            col = Math.floor(Math.random() * this.boardSize);
+
         }
 
         var newShipLocations = [];
         for (var i=0; i< this.shipLength; i++) {
             if (direction === 1) {
                 //add location array for the horizontal ship
+                newShipLocations.push(row + "" + (col + i) );
             }
     
             else {
                 //add location array for the vertical ship
+                newShipLocations.push( (row + i) + "" + col );
+
             }
     
         }
+        return newShipLocations;
+
+    },
+
+
+    /*takes each saved ship and checks through its locations 
+    for all generated location slots separately */
+    collision : function (locations) {
+
+        for (var i = 0; i < this.numShips; i++ ) {
+            var ship = model.ships[i];
+        
+
+            for (var j=0; j < locations.length; j++) {
+                if ( ship.locations.indexOf(locations[j]) >= 0 ) {
+                    return true; //collision
+                }
+
+            }
+
+        }
+        return false; //no collision in all ships
 
     },
 
@@ -249,6 +279,9 @@ let initial = {
     
         var guessInput = document.getElementById("guessInput");
         guessInput.onkeypress = this.handleKeyPress;
+
+        model.generateShipLocations();
+        console.log(model.ships);
     
     },
 

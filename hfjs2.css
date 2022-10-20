@@ -11,3 +11,7 @@
 .unblur {
 
 }
+
+.scaleX {
+    filter:grayscale(0.5);
+}

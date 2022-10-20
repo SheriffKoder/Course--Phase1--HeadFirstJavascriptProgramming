@@ -947,8 +947,23 @@ can create as many handlers as wanted, the browser keeps track
 
 /*////////////////////////////////////////////////////////////////////*/
 
+window.onresize = rotate;
+//onresize, will do this function
 
+window.onresize = function () {
 
+        console.log("resized window");
+}
+
+/////////////////////////////////////////
+var addOne = function (x) {
+                return x+1;
+            };
+
+            var six = addOne(5);
+            var seven = addOne(6);
+console.log("here " + six);
+console.log("here " + seven);
 
 
 
@@ -956,6 +971,9 @@ can create as many handlers as wanted, the browser keeps track
 
 /*
 
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
 function Duck (sound) {
 

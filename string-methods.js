@@ -1,6 +1,6 @@
 
 
-
+console.log("//////////////////");
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 
@@ -90,3 +90,30 @@ console.log(result2);
 
 /*////////////////////////////////////////////////////////////////////*/
 
+//Wrapper Methods
+//anchor method outputs the string as an html element
+//big, blink, bold, fixed <tt>,font color  <font color="red"></font>, 
+//better use concatenate tags it may not be supported in future versions
+
+let text2210 = "Hello world";
+let text22102 = text2210.fontsize("red");
+console.log(text22102);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("//////////////////");

@@ -1095,9 +1095,9 @@ window.onresize = function () {
     
     var passengers = [
 
-        {name: "Jane Doloop", paid: true },
-        {name: "Dr.Evel", paid: true},
-        {name: "John Funcall", paid: false}
+        {name: "Jane Doloop", paid: true, ticket: "businessclass" },
+        {name: "Dr.Evel", paid: true, ticket: "firstclass"},
+        {name: "John Funcall", paid: false, ticket: "businessclass"}
     ];
 
     //.paid
@@ -1131,9 +1131,61 @@ window.onresize = function () {
     }
 
 
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    //returning a function from another function
+
+    serveCustomer(passengers);
+
+    function serveCustomer (passedPassenger) {
+
+        //create drink order
+        var Drink = createDrinkOrder (passedPassenger); //returns a function
+
+        Drink(); //call the returned function
+
+        //get dinner
+
+        //pickup trash
+
+
+    }
+
+
+    function createDrinkOrder (passedPassenger) {
+
+        var orderFunction;  // a var to place place the conditioned the function in
+
+        if (passedPassenger.ticket === "firstclass") {
+            orderFunction = function () {
+                console.log("First Class Order");
+            };
+
+        }
+        else {
+            orderFunction = function () {
+                console.log("Business Class Order");
+ 
+            };
+        }
+
+        return orderFunction; //return a function with a specific behavior
+
+    }
 
 
 
+    function addN(n) {
+
+        var adder = function(x) {
+                       return n + x;
+        };
+
+        return adder;
+       }
+
+       let x22101 = addN(2); //returns function which returns 2+x
+       console.log(x22101(1));  //set x, get the return
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/

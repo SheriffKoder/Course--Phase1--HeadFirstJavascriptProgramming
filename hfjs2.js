@@ -1031,11 +1031,18 @@ window.onresize = function () {
 
 
     ////////////////////////////////////////////////////////
-    //work the same way becayse references are references 
+    //work the same way because references are references 
     //no matter the method be it declaration or expression
 
 
+
     //can pass to functions, return from them, assign to variables
+    //functions are values, can be assigned to variables
+
+
+
+
+    ////////////////////////
 
     var addOne = function (x) {
                     return x+1;
@@ -1054,13 +1061,79 @@ window.onresize = function () {
     console.log(addOne);    //the whole function
     console.log(typeof addOne); //function
     
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    //using a function in another function
+
+
+    function output2210 (inputFunction) {
+
+        let x2210 = prompt("enter a number and it shall be returned");
+        //console.log("inputFunction " + inputFunction(Number(x2210)));
+
+    }
+
+    //output2210(addOne);
+
+    ////////////////////////
+
+
+    
+
+    /*
+    first class values, numbers, booleans, strings, objects
+    and now functions also
+
+    assign a value to a variable
+    pass/return value to/from a function
+    store in objects or arrays
+
+
+    */
+
+    /*////////////////////////////////////////////////////////////////////*/
+    
+    var passengers = [
+
+        {name: "Jane Doloop", paid: true },
+        {name: "Dr.Evel", paid: true},
+        {name: "John Funcall", paid: false}
+    ];
+
+    //.paid
+    //onNoFlyList
+
+    let Fly =  processPassengers (passengers, checkNoFlyList);
+    
+    function processPassengers (passedPassengersList, testFunction) {
+
+        for (var i=0; i < passedPassengersList.length; i++) {
+
+            if (testFunction(passedPassengersList[i])) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    console.log("Fly is " + Fly);
+
+
+
+    function checkNoFlyList (passedPassenger) {
+        return (passedPassenger.name === "Dr.Evel"); //in case of dr evel will return true, so will false the parent function
+    }
+
+    function checkNotPaid (passedPassenger) {
+        return (!passengers.paid); // if passenger paid, return false, so in parent function return true
+    }
 
 
 
 
 
-
-/*
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/

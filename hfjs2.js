@@ -1151,7 +1151,7 @@ window.onresize = function () {
 
     }
 
-
+    /* if this, then the returned function will be X  and return its address*/
     function createDrinkOrder (passedPassenger) {
 
         var orderFunction;  // a var to place place the conditioned the function in
@@ -1187,6 +1187,124 @@ window.onresize = function () {
        let x22101 = addN(2); //returns function which returns 2+x
        console.log(x22101(1));  //set x, get the return
 
+
+
+
+
+
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+
+
+       var numbersArray = [60, 50, 62, 58, 54, 54];
+
+       numbersArray.sort(compareNumbers);
+
+       console.log ("numbersArray " + numbersArray);
+
+
+       /* function related to sort method
+       swap num1/2 in function for descending */
+       function compareNumbers (num1, num2) {
+
+            if (num1 > num2) {
+                return 1;
+            }
+
+            else if (num1 === num2) {
+                return 0;
+            }
+
+            else if (num1 < num2) {
+                return -1;
+            }
+
+       }
+
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+
+
+    var products = [ 
+        { name: "Grapefruit", calories: 170, color: "red", sold: 8200 },
+        { name: "Orange", calories: 160, color: "orange", sold: 12101 },
+        { name: "Cola", calories: 210, color: "caramel", sold: 25412 },
+    ];
+
+    let text2310 = "";
+    for (i=0; i< products.length; i++){
+        text2310 += products[i].name + " ";
+    }
+ 
+    console.log ("products " + text2310);
+
+    //////
+
+    //products.sort(compareSold);
+    products.sort(compareName);
+
+    let text2310_1 = "";
+    for (i=0; i< products.length; i++){
+        text2310_1 += products[i].name + " ";
+    }
+ 
+    console.log ("products " + text2310_1);
+
+
+    /* will compare two inputs of an array
+    and BASED on their .sold property */
+    function compareSold (colaA, colaB) {
+
+         if (colaB.sold > colaA.sold) {
+             return 1;
+         }
+
+         else if (colaB.sold === colaA.sold) {
+             return 0;
+         }
+
+         else if (colaB.sold < colaA.sold) {
+             return -1;
+         }
+
+    }
+    /* or just return num1-num2; */
+
+
+    /* can also arrange by letters */
+    function compareName (colaA, colaB) {
+
+        if (colaA.name > colaB.name) {
+            return 1;
+        }
+
+        else if (colaA.name === colaB.name) {
+            return 0;
+        }
+
+        else if (colaA.name < colaB.name) {
+            return -1;
+        }
+
+   }
+
+
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+    
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /* Variable functions

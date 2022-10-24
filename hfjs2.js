@@ -1017,7 +1017,7 @@ window.onresize = function () {
     //var x = function ()
     //**function expression**
     //reference to a function, no name
-    //read "while" code evaluated, runtime
+    //read "while" code evaluated, runtime, so position is important not to call before its statement
     //expression because evaluates to a function reference 
         //when pass through code in its second time, going through variables
         //it declares the variable
@@ -1224,7 +1224,7 @@ window.onresize = function () {
 
 
     /*////////////////////////////////////////////////////////////////////*/
-    /*////////////////////////////////////////////////////////////////////*/
+    
 
 
     var products = [ 
@@ -1292,10 +1292,88 @@ window.onresize = function () {
 
 
 
-    /*////////////////////////////////////////////////////////////////////*/
-    /*////////////////////////////////////////////////////////////////////*/
-    /*////////////////////////////////////////////////////////////////////*/
-    /*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/* asynchronous functions, closures
+
+because some functions are used only one time
+we can use it without name, thus cleaner code
+
+
+anywhere you might put a function reference(name)
+you can put a function expression
+
+
+    window.onload = function () {
+
+    };
+
+
+    setTimeout ( function () {}, ms   );
+
+Local function to a function
+placing a function inside another function is just a matter of scope
+with regards to it being declaration or expression (defined after function is evaluated)
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+/*lexical scope
+rules for scoping are based on the structure of code, not dynamic runtime
+
+
+/* Function Environments
+when a function is declared, all its variables are stored in an environment
+a function returns with the environment attached to it,
+contains any function locals and parameters
+any un-local and used variable in the function is a free-variable
+
+/*closing a function
+when a function has its free-variables provided and and environment that binds these variables together
+it is a closed function
+named function reference + free variables + environment of variable = closure
+
+
+
+
+
+var justVar = "global";
+
+function TestFunction () {
+
+    var justVar = "function local";
+
+        function inner () {
+            return justVar; //whenever inner is returned, "function local" is in the environment
+        }
+
+    return inner(); 1)
+    return inner;   2)    
+}
+
+1)
+var result = TestFunction();   //result local
+
+        var result = inner();
+        //the function is called within Testfunction justVar local is returned
+
+2)
+var innerFunction = TestFunction();  
+var result = innerFunction(); //result local
+
+
+        var innerFunction = inner; thus
+        //a reference to a function + environment is returned
+
+
+//incase of inner(), the function is returned 
+
+
+then we can create a chain of environments of all the nested functions from inner to outer
+a variable is found from the most nested to the first layer nesting, otherwise its global
 
 
 
@@ -1304,7 +1382,33 @@ window.onresize = function () {
 
 
 
-    
+
+*/
+
+
+
+
+function makeCounter() {
+    var count = 0;
+
+    function counter() {
+        count = count + 1;
+        return count;
+    }
+
+    return counter;
+
+   }
+
+
+   var doCount = makeCounter();
+   console.log(doCount());
+   console.log(doCount());
+   console.log(doCount());
+
+
+
+
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /* Variable functions

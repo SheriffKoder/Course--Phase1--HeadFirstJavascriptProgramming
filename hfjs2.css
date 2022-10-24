@@ -1,4 +1,6 @@
-
+body {
+    height: 2000px;
+}
 
 #zero {
     height: 200px;
@@ -15,3 +17,18 @@
 .scaleX {
     filter:grayscale(0.5);
 }
+
+
+#animation_event {
+    width: 550px;
+    height: 100px;
+    background: orange;
+    position: relative;
+    font-size: 20px;
+
+}
+
+@keyframes animation1 {
+    from {left: 0px;}
+    to {left: 100px;}
+  }

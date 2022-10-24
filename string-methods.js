@@ -91,17 +91,83 @@ console.log(result2);
 /*////////////////////////////////////////////////////////////////////*/
 
 //Wrapper Methods
-//anchor method outputs the string as an html element
-//big, blink, bold, fixed <tt>,font color  <font color="red"></font>, 
 //better use concatenate tags it may not be supported in future versions
 
+//methods output the string as an html element to be used in innerHtml
+
+//anchor, link
+//big
+//blink, 
+//bold, 
+//fixed <tt>,
+//font color  <font color="red"></font>, 
+//font size
+//italics <i> </i>
+//small
+//strike
+//sub
+//sup
+
+
 let text2210 = "Hello world";
-let text22102 = text2210.fontsize("red");
-console.log(text22102);
+let text22102 = text2210.sup("red");
+//console.log(text22102);
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
 
 
 
+//HTML DOM EVENTS
 
+
+
+//media loading issues : onabrot, onerror, onsuspend
+//.afterprint
+
+
+/*////////////////////////////////////////////////////////////////////*/
+//Css animation related .animationstart, .animationiteration, .animationend
+
+//onclick this function
+
+let myDiv2410 = document.getElementById("animation_event");
+
+myDiv2410.addEventListener("click", clickFunction);
+
+function clickFunction (para) {
+    
+    let myDivHere = para.target;
+    myDivHere.style.animation = "animation1 2s 2";
+
+
+    myDivHere.addEventListener("animationstart", startFunction );
+    myDivHere.addEventListener("animationiteration", repeatFunction );
+    myDivHere.addEventListener("animationend", endFunction );
+
+
+    function startFunction () {
+        myDivHere.style.background = "red";
+        myDivHere.style.color = "white";
+
+    }
+
+    function repeatFunction () {
+        myDivHere.style.background = "red";
+        myDivHere.style.color = "lime";
+
+    }
+
+    function endFunction () {
+        myDivHere.style.background = "purple";
+        myDivHere.style.color = "grey";
+
+    }
+
+}
+
+/*////////////////////////////////////////////////////////////////////*/
 
 
 

@@ -1222,6 +1222,7 @@ window.onresize = function () {
 
        }
 
+       /* { return num1-num2; } */
 
     /*////////////////////////////////////////////////////////////////////*/
     
@@ -1401,15 +1402,15 @@ function makeCounter() {
         return count;
     }
 
-    return counter;
+    return counter; /* wake the counter within its env */
 
    }
 
 
-   var doCount = makeCounter();
-   console.log(doCount());
-   console.log(doCount());
-   console.log(doCount());
+   var doCount = makeCounter(); /* counter here */
+   console.log(doCount); /* counter in its env */
+   console.log(doCount); /* counter in its env */
+   console.log(doCount); /* counter in its env */
 
 
 /////////////////
@@ -1426,7 +1427,7 @@ function makeCounter() {
    }
 
 
-   var doCount = makeCounter();
+   var doCount = makeCounter(); /*returns an object to be used */
    console.log( doCount.increment() );
    console.log( doCount.increment() );
    console.log( doCount.increment() );
@@ -1437,7 +1438,7 @@ function makeCounter() {
     count++;
     div.innerHTML = message + count + " times!";
     };
-    //tree free variables, message, message, count;
+    //three free variables, message, message, count;
 
    
 
@@ -1496,12 +1497,6 @@ function makeTimer ( doneMessage, n) {
     //console.log("Guessing 'secret': " + tryGuess("secret"));
 
 
-
-
-
-
-
-
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /* Variable functions
@@ -1551,3 +1546,83 @@ console.log(myFather.eyecolor);
 
 
 
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+/*
+object literal previously used
+now we learn object constructors
+design blueprint
+//good for reusing object models
+
+similar to a function that returns an object
+
+can use the constructor like any function
+but it returns by default the this's
+so any other kind of return, will not output the object
+? as said in the book
+
+//some extra things happen when keyword "new" is used
+//when using new, value of this is set to the new object
+
+//next when we call object methods, ths will refer to the method's object
+
+
+
+
+*/
+
+let barkTone = function () {
+    console.log("Woof Woof");
+
+}
+
+//object constructor
+//conventionally first letter is capital
+function Dog (name1, breed1, weight1, BarkFunctionInput) {
+    this.name = name1;
+    this.breed = breed1;
+    this.weight = weight1;
+    this.bark = function () {
+                    console.log("Woofer Woofer");
+                }
+    this.barkFunc = BarkFunctionInput;
+
+}
+
+var fido = new Dog ("Fido", "Mixed", 38);
+var dido = new Dog ("Dido", "Ger", 37, barkTone);
+
+var dogs = [fido,dido]
+
+
+console.log("Dog name " + dogs[1].name);
+console.log("Dog bark " + dogs[1].bark()); //prints return ?
+console.log("Dog bark2 " + dogs[1].barkFunc()); //this ex before the line above ?
+
+
+//////////////////////////////////
+
+//object constructors used simultaneously
+function widget (name1, size1, view1) {
+    this.name = name1;
+    this.size = size1; //widget of size 300x300px
+    this.view = view1; //widget in desktop or sidebar
+}
+
+function release (date1, targeted1) {
+    this.date = date1;
+    this.targeted = targeted1;
+}
+
+var weather = new widget ("weather", "300x300","sidebar");
+var update = new release ("26/10", weather);
+
+console.log("targeted " + update.date);
+console.log("targeted " + update.targeted);//
+console.log("update " + update.targeted.name);
+console.log("update " + update.targeted.size);
+console.log("update " + update.targeted.view);

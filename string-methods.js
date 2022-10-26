@@ -126,6 +126,11 @@ let text22102 = text2210.sup("red");
 //media loading issues : onabrot, onerror, onsuspend
 //.afterprint
 
+//on-canplay    //when browser has buffered media and ready to play it
+//on-canplaythrough     //without stopping for buffering, fully loaded
+
+
+
 
 /*////////////////////////////////////////////////////////////////////*/
 //Css animation related .animationstart, .animationiteration, .animationend
@@ -170,7 +175,17 @@ function clickFunction (para) {
 /*////////////////////////////////////////////////////////////////////*/
 
 
+//before print, about to be printed
 
+//before unload, before the document becomes unloaded, custom message
+    //<body onbeforeunload="return unloadfunction();">
+
+    function unloadfunction () {
+        return "message here will be displayer only in IE else default";
+    }
+
+
+//onfocus, onblur/onfocusout
 
 
 

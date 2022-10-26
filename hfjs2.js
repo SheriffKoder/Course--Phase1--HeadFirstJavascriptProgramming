@@ -1331,6 +1331,10 @@ a function returns with the environment attached to it,
 contains any function locals and parameters
 any un-local and used variable in the function is a free-variable
 
+//contains the actual env, so changes are permanent
+//any changes happen in the env, affects the nested items
+
+
 /*closing a function
 when a function has its free-variables provided and and environment that binds these variables together
 it is a closed function
@@ -1376,6 +1380,7 @@ then we can create a chain of environments of all the nested functions from inne
 a variable is found from the most nested to the first layer nesting, otherwise its global
 
 
+whenever reference to a function that has free variables, also a closure exists
 
 
 
@@ -1387,7 +1392,7 @@ a variable is found from the most nested to the first layer nesting, otherwise i
 
 
 
-
+/* using function environment to make a counter without global */
 function makeCounter() {
     var count = 0;
 
@@ -1405,6 +1410,94 @@ function makeCounter() {
    console.log(doCount());
    console.log(doCount());
    console.log(doCount());
+
+
+/////////////////
+function makeCounter() {
+    var count = 0;
+
+    return {                       //opened an object, returns a method
+        increment: function () {  // object method
+            count++;
+            return count;         //increment returns the count
+        }
+    }
+
+   }
+
+
+   var doCount = makeCounter();
+   console.log( doCount.increment() );
+   console.log( doCount.increment() );
+   console.log( doCount.increment() );
+
+   
+/*
+   button.onclick = function() {
+    count++;
+    div.innerHTML = message + count + " times!";
+    };
+    //tree free variables, message, message, count;
+
+   
+
+
+
+
+/*closure from a nested function */ 
+function makeTimer ( doneMessage, n1, n2) {
+        /*
+        setTimeout (function(){ alert(doneMessage); }, n1);
+        //function with free vaiables, has env, Timeout keeps these
+        //closure created before the calling
+        //
+
+
+        setTimeout (function () { doneMessage = "hmm";}, 1000);
+        //doneMessage = "hmm";
+        //changes the value in the env used by setTimeout after 1000
+
+        setTimeout (function(){ alert(doneMessage); }, n2);
+        //so now output is hmm
+        */
+}
+
+
+makeTimer("done!!", 500, 5000);
+
+/*********************//*
+if example about function declared outside 
+function handler (){ 
+    alert(doneMessage); 
+}
+
+function makeTimer ( doneMessage, n) {
+
+        setTimeout (handler, n);
+        //handler has no env created?
+}
+*//*********************/
+
+    function makePassword(password) {
+
+        return function (passwordGuess) {
+            return (passwordGuess === password);
+        };
+    }
+
+
+    //var tryGuess = makePassword("secret"); 
+        //secret is stored in env in password variable
+        //tryGuess is the function guess with password secret
+
+    //console.log("Guessing 'nope': " + tryGuess("nope"));
+        //nope === secret ?
+
+    //console.log("Guessing 'secret': " + tryGuess("secret"));
+
+
+
+
 
 
 

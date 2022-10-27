@@ -1686,3 +1686,31 @@ if (cadi instanceof Car) {
     console.log ("Cadi is a Car");
 }
 
+
+/*////////////////////////////////////////////////////////////////////*/
+//object after being created by a constructor it can be altered
+//adding properties or methods to a specific object
+//and still an instanceof Car constructor
+
+cadi.avgspeed = 130;
+
+    console.log("Cadi avg speed " + cadi.avgspeed);
+
+delete cadi.avgspeed;
+
+    console.log("Cadi avg speed " + cadi.avgspeed);
+
+
+
+cadi.driver = function (person) {
+    return (person === "Bob");
+};
+
+var right_owner = cadi.driver("Bob");
+
+    console.log("Cadi check driver bob " + right_owner);
+
+
+
+
+

@@ -1497,8 +1497,16 @@ function makeTimer ( doneMessage, n) {
     //console.log("Guessing 'secret': " + tryGuess("secret"));
 
 
+
+
+    
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+
 /* Variable functions
 
 //x = new Function_name
@@ -1596,7 +1604,7 @@ function Dog (name1, breed1, weight1, BarkFunctionInput) {
 var fido = new Dog ("Fido", "Mixed", 38);
 var dido = new Dog ("Dido", "Ger", 37, barkTone);
 
-var dogs = [fido,dido]
+var dogs = [fido,dido];
 
 
 console.log("Dog name " + dogs[1].name);
@@ -1626,3 +1634,55 @@ console.log("targeted " + update.targeted);//
 console.log("update " + update.targeted.name);
 console.log("update " + update.targeted.size);
 console.log("update " + update.targeted.view);
+
+
+/*////////////////////////////////////////////////////////////////////*/
+
+/*
+new first creates a new object before assigning it to this
+new creates a new object
+
+new is an operator, operates on its operands, this case a function call
+the new object created is returned from the constructor
+
+*/
+
+
+//can pass an object and use its properties as inputs
+function Car(para) {
+    this.make = para.make;
+    this.model = para.model;
+    this.year = para.year;
+    this.color = para.color;
+    this.passengers = para.passengers;
+    this.convertible = para.convertible;
+    this.mileage = para.mileage;
+    this.started = false;
+    this.start = function() {
+                    this.started = true;
+                };
+    //rest of the methods here
+   }
+
+
+
+//var cadi = new Car ("GM", "Cadillac", "1955", "tan");
+
+var cadiParas = {
+    make: "GM",
+    model: "Cadillac",
+    year: 1955,
+    color: "tan"
+}
+
+var cadi = new Car (cadiParas);
+
+console.log("cadiPara >> " + cadi.make);
+console.log("cadiPara >> " + typeof cadi); //object
+
+//we cant know the object is type car, but can know its constructor
+
+if (cadi instanceof Car) {
+    console.log ("Cadi is a Car");
+}
+

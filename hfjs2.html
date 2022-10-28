@@ -47,9 +47,27 @@
             </div>
 
 
+<!--////////////////////////////////////////////////////////////////////////-->
+<!-- drag and drop -->
+
+        <div class="droptarget" 
+        ondrop="on_drop(event)" 
+        ondragover="on_drag_over(event)">
+    
+            <p  ondragstart="drag_start(event)" 
+                ondrag="on_drag(event)" 
+                draggable="true" id="dragtarget">
+            Drag me!
+            </p>
+
+        </div>
 
 
+        <div    class="droptarget" 
+                ondrop="on_drop(event)"
+                ondragover="on_drag_over(event)" > </div>
 
+        <p id="demo"></p>
 
 
             

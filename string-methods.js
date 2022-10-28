@@ -188,13 +188,59 @@ function clickFunction (para) {
 //onfocus, onblur/onfocusout
 
 
+/*////////////////////////////////////////////////////////////////////*/
+
+//onchange, for selection/checked inputs
+//click
+//contextmenu, right click, firefox has a contextmenu attribute to be edited
+//oncopy
+//oncut
+//dblclick
+//drag
+
+
+
+//ondragstart
+function drag_start (event) {
+    event.dataTransfer.setData("Text", event.target.id);
+}
+
+
+//ondragover //allowDrop
+function on_drag_over (event) {
+    event.preventDefault(); //prevents element to appear on div1 ?
+}
+
+
+//ondrop
+function on_drop (event) {
+    let data =   event.dataTransfer.getData("Text");
+    
+    event.target.appendChild(document.getElementById(data)); //append div with text?
+
+    document.getElementById("demo").innerHTML = "The Element was dropped";
+
+
+}
+
+/*misc*/
+//ondrag //dragging
+function on_drag (event) {
+    document.getElementById("demo").innerHTML = "the element is being dragged";
+}
 
 
 
 
 
+/* explanation: send the id, take the id, append that element */
+/*
+para.dataTransfer.setData("Text", para.target.id); //dataTransfer the id of type text
 
-
+let DataReceived_id = para.dataTransfer.getData("Text");  //get the data of the type text
+let DataReceived = document.getElementById(DataReceived_id); // data is an id so get the element of this id
+para.target.appendChild(DataReceived_id);
+*/
 
 
 console.log("//////////////////");

@@ -1607,9 +1607,9 @@ var dido = new Dog ("Dido", "Ger", 37, barkTone);
 var dogs = [fido,dido];
 
 
-console.log("Dog name " + dogs[1].name);
-console.log("Dog bark " + dogs[1].bark()); //prints return ?
-console.log("Dog bark2 " + dogs[1].barkFunc()); //this ex before the line above ?
+//console.log("Dog name " + dogs[1].name);
+//console.log("Dog bark " + dogs[1].bark()); //prints return ?
+//console.log("Dog bark2 " + dogs[1].barkFunc()); //this ex before the line above ?
 
 
 //////////////////////////////////
@@ -1637,6 +1637,8 @@ console.log("update " + update.targeted.view);
 
 
 /*////////////////////////////////////////////////////////////////////*/
+/*27/10*/
+
 
 /*
 new first creates a new object before assigning it to this
@@ -1649,7 +1651,7 @@ the new object created is returned from the constructor
 
 
 //can pass an object and use its properties as inputs
-function Car(para) {
+function Car (para) {
     this.make = para.make;
     this.model = para.model;
     this.year = para.year;
@@ -1687,30 +1689,213 @@ if (cadi instanceof Car) {
 }
 
 
+
+///////////
+/*
+if dogCatcher (dogs[i]) {
+}
+
+dogCatcher (obj) {
+    if (obj instanceof Dog) {
+        return true;
+    }
+}
+
+
+
+
 /*////////////////////////////////////////////////////////////////////*/
 //object after being created by a constructor it can be altered
 //adding properties or methods to a specific object
 //and still an instanceof Car constructor
 
-cadi.avgspeed = 130;
+cadi.avgspeed = 130; //avg speed did not exist before
 
     console.log("Cadi avg speed " + cadi.avgspeed);
 
-delete cadi.avgspeed;
+delete cadi.avgspeed;   //remove
 
     console.log("Cadi avg speed " + cadi.avgspeed);
 
 
 
-cadi.driver = function (person) {
-    return (person === "Bob");
+cadi.driver = function (person) {       //add a function
+    return (person === "Bob");          //return true if bob = bob
 };
 
-var right_owner = cadi.driver("Bob");
+var right_owner_check = cadi.driver("Bob");
 
-    console.log("Cadi check driver bob " + right_owner);
-
-
+    console.log("Cadi check driver bob " + right_owner_check);
 
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*
+//28/10
+
+javascript comes with some objects assisting in
+date, time ,patterns in text, 
+
+
+*/
+
+////Date and its methods
+let now = new Date();       //full date
+console.log("now " + now);
+
+console.log("now " + now.toString());
+console.log("now " + now.getFullYear());
+console.log("now " + now.getDay());
+
+//setting a variable of type Date, new Date
+let new_date = new Date("Oct 30, 08:03 pm, 2022 "); //no order
+console.log("now " + new_date);
+
+
+////Array and its methods
+
+let emptyArray = new Array();               //array with length of zero
+emptyArray[0] = "1";
+emptyArray[1] = "3";
+
+console.log(  emptyArray.reverse()  );      //reverse the array
+console.log(  emptyArray.join(" - ")  );    //in a string form separated by _-_
+//works on [] array and new array()
+
+//let n = numberOfWidgets;
+//let emptyArray = new Array(n);               //array with length of zero
+//so can set the array by a defined number
+
+
+////every, takes a function, 
+//tests each value of the array, to see if the function returns true or false
+//if true for all array items, then it outputs true
+
+let oddCheck = function (x) {
+    return ( (x % 2) !== 0 );
+}
+
+var areAllOdd = emptyArray.every( oddCheck );  //oddCheck every passes x or function right away
+console.log(areAllOdd); //true or false
+
+//a look at JavaScript: The Definitive Guide to fully explore the array object. 
+// var newObj = new Object();
+
+// Error constructor
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+29/10
+
+//a constructor is a function
+
+
+//object-model
+//objects inherit a behavior from other objects
+//interitance based on prototypes
+//prototype based language, are more general, flexible, efficient and expressive
+
+
+//on object constructors, 
+//methods are re-created even if they are the same for each creation
+than vars which are more specific to the creation
+
+//inherit and reuse existing properties
+//if we want the value of fido.species, we first check the fido object, but when it isn’t found there, we check the dog prototype (and find it).
+
+//js secret, functions and arrays are bottom line objects
+//so a constructor (function) can have a property like 
+//.prototype to access its prototype section
+
+//separate the specific and reused properties from the common reused properties 
+using prototype
+
+
+*/
+
+
+function Dog(name, breed, weight) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+}
+
+Dog.prototype.species = "Canine";
+Dog.prototype.bark = function () {  //this still refers to the original object
+    if (this.weight > 25) {
+        console.log(this.name + " says Woof!");
+        } else {
+        console.log(this.name + " says Yip!");
+        }
+}
+
+
+Dog.prototype.run = function() {
+    console.log("Run!");
+   };
+
+Dog.prototype.wag = function() {
+    console.log("Wag!");
+   };
+
+var fido = new Dog("Fido", "Mixed", 38);
+var fluffy = new Dog("Fluffy", "Poodle", 30);
+var spot = new Dog("Spot", "Chihuahua", 10);
+
+spot.bark();
+
+//special function to spot, as it comes after it 
+//will override the prototype
+spot.bark = function () {   
+    console.log(this.name + " says Woof!");
+
+}
+
+spot.bark();
+fido.bark();
+
+//any methods added even after objects are created, all objects will inherit the method/behavior
+
+console.log (Dog);              //this contains the name,breed,weight
+console.log (Dog.prototype);    //this contains the function etc.
+
+//we recreate a new Dog with its names
+//object does not have methods
+//so when a method is called, and not found in the object
+//then we look in the prototypes and invoke it
+
+
+/*
+
+use 1: save space as prototype is not copied with new
+use2: can be added in runtime
+prototype inherited/seen
+
+*/
+
+Dog.sitting = true;
+Dog.prototype.sitting = false;  //sitting prototype, replaces object's
+
+Dog.prototype.sit = function () {
+    if (this.sitting) {
+        console.log(this.name + " is already sitting");
+    }
+    else {
+        this.sitting = true; 
+        //new sitting is created which replaces the prototype
+        //sitting added to the object itself, on the fly
+        console.log(this.name + " is now sitting");
+
+    }
+}
+
+console.log(fido.sitting);  //false
+fido.sit();
+console.log(fido.sitting); //true, for fido only
+
+
+console.log(spot.sitting);  //false
+spot.sit();
+console.log(spot.sitting);  //true
+
+console.log("species in object ? " + spot.hasOwnProperty("species"));

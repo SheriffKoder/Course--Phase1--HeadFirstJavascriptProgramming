@@ -1791,17 +1791,19 @@ console.log(areAllOdd); //true or false
 
 
 //object-model
-//objects inherit a behavior from other objects
-//interitance based on prototypes
-//prototype based language, are more general, flexible, efficient and expressive
+
+use 1: save space as prototype is not copied with new
+use2: can be added in runtime
+prototype inherited/seen
 
 
-//on object constructors, 
-//methods are re-created even if they are the same for each creation
-than vars which are more specific to the creation
+prototypes are inherited
+1) to have a general method not specific to definitions
+prototypes are used
+code looks when called in the object, if not found checks the prototype space
 
-//inherit and reuse existing properties
-//if we want the value of fido.species, we first check the fido object, but when it isn’t found there, we check the dog prototype (and find it).
+2) constructors duplicate definitions with each creation
+
 
 //js secret, functions and arrays are bottom line objects
 //so a constructor (function) can have a property like 
@@ -1821,11 +1823,12 @@ function Dog(name, breed, weight) {
 }
 
 Dog.prototype.species = "Canine";
-Dog.prototype.bark = function () {  //this still refers to the original object
-    if (this.weight > 25) {
-        console.log(this.name + " says Woof!");
+Dog.prototype.bark = function () {  
+        //this still refers to the original object
+        if (this.weight > 25) {
+            console.log(this.name + " says Woof!"); 
         } else {
-        console.log(this.name + " says Yip!");
+            console.log(this.name + " says Yip!");
         }
 }
 
@@ -1845,7 +1848,7 @@ var spot = new Dog("Spot", "Chihuahua", 10);
 spot.bark();
 
 //special function to spot, as it comes after it 
-//will override the prototype
+//will override the prototype due to its position in code
 spot.bark = function () {   
     console.log(this.name + " says Woof!");
 
@@ -1867,9 +1870,6 @@ console.log (Dog.prototype);    //this contains the function etc.
 
 /*
 
-use 1: save space as prototype is not copied with new
-use2: can be added in runtime
-prototype inherited/seen
 
 */
 
@@ -1899,3 +1899,62 @@ spot.sit();
 console.log(spot.sitting);  //true
 
 console.log("species in object ? " + spot.hasOwnProperty("species"));
+//species created in a prototype
+//no species is not its own object, then its a prototype
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+show dog prototype that inherits from the dog prototype
+
+dog object to inherit from the dog prototype 
+
+
+*/
+
+var aDog = new Dog(); //not care about specifics, just need inheritance from prototype
+
+function ShowDog(name, breed, weight, handler) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+    this.handler = handler;
+   }
+
+   ShowDog.prototype = new Dog();   //or aDog;
+   //ShowDog.prototype.constructor = ShowDog; explained below
+   ShowDog.prototype.league = "Webville";
+   ShowDog.prototype.stack = function() {
+        console.log("Stack");
+    };
+
+
+    console.log("////[][][]////");
+    var scotty = new ShowDog ("Scotty", "Terrier", 15, "Cookie");
+    console.log(scotty.league);
+    console.log(scotty.species); //instance of dog prototype prototype
+    scotty.stack();
+    scotty.bark();  //instance of dog prototype prototype
+
+   //showDog.name
+   //showDog.Dog.sitting;
+
+   let fido2 = new ShowDog("fido","35");
+   console.log(fido2.sit());
+
+   //instance of both, instance look for all objects we inherit from
+   if (scotty instanceof Dog) {
+    console.log("Scotty is a Dog");
+   }
+   if (scotty instanceof ShowDog) {
+    console.log("Scotty is a ShowDog");
+   }
+
+   //////////////////////////////////////////
+   //output Dog even though showDog first created it
+   //console.log("Scotty constructor is " + scotty.constructor);
+
+   //to fix that set it manually not cause confusion
+   ShowDog.prototype.constructor = ShowDog;
+   console.log("Scotty constructor is " + scotty.constructor);

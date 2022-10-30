@@ -52,7 +52,9 @@
 
         <div class="droptarget" 
         ondrop="on_drop(event)" 
-        ondragover="on_drag_over(event)">
+        ondragover="on_drag_over(event)"
+        ondragleave="dragLeave(event)"
+        ondragenter="dragEnter(event)">
     
             <p  ondragstart="drag_start(event)" 
                 ondrag="on_drag(event)" 
@@ -68,6 +70,7 @@
                 ondragover="on_drag_over(event)" > </div>
 
         <p id="demo"></p>
+        <p id="demo2"></p>
 
 
             

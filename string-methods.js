@@ -199,6 +199,17 @@ function clickFunction (para) {
 //drag
 
 
+//drag start, drag end
+//drag over
+//drop
+//drag
+
+
+//drag leave
+//drag enter
+//
+
+
 
 //ondragstart
 function drag_start (event) {
@@ -206,7 +217,7 @@ function drag_start (event) {
 }
 
 
-//ondragover //allowDrop
+//ondragover
 function on_drag_over (event) {
     event.preventDefault(); //prevents element to appear on div1 ?
 }
@@ -214,6 +225,8 @@ function on_drag_over (event) {
 
 //ondrop
 function on_drop (event) {
+    event.preventDefault(); //prevents element to appear on div1 ?
+
     let data =   event.dataTransfer.getData("Text");
     
     event.target.appendChild(document.getElementById(data)); //append div with text?
@@ -224,12 +237,29 @@ function on_drop (event) {
 }
 
 /*misc*/
-//ondrag //dragging
+//ondrag
 function on_drag (event) {
     document.getElementById("demo").innerHTML = "the element is being dragged";
 }
 
 
+function dragEnter (event) {
+
+    if (event.target.className == "droptarget") {
+        document.getElementById("demo2").innerHTML = "entered drop zone";
+        event.target.style.border = "3px dotted red";
+    }
+}
+
+
+function dragLeave (event) {
+
+    if (event.target.className = "droptarget" ) {
+        document.getElementById("demo2").innerHTML = "left drop zone";
+        event.target.style.border = "";
+    }
+
+}
 
 
 
@@ -241,6 +271,17 @@ let DataReceived_id = para.dataTransfer.getData("Text");  //get the data of the 
 let DataReceived = document.getElementById(DataReceived_id); // data is an id so get the element of this id
 para.target.appendChild(DataReceived_id);
 */
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+
 
 
 console.log("//////////////////");

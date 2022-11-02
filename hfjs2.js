@@ -1068,7 +1068,7 @@ window.onresize = function () {
 
     function output2210 (inputFunction) {
 
-        let x2210 = prompt("enter a number and it shall be returned");
+        //let x2210 = prompt("enter a number and it shall be returned");
         //console.log("inputFunction " + inputFunction(Number(x2210)));
 
     }
@@ -2124,7 +2124,7 @@ function ShowDog(name, breed, weight, handler) {
         let x;
         console.log("X is", x);
         console.log(this.level);
-        x = prompt("enter a value");
+       // x = prompt("enter a value");
         console.log("X is", x);
     }
 
@@ -2140,9 +2140,242 @@ function ShowDog(name, breed, weight, handler) {
     PC1.func1();
     console.log(PC1);       // game object is only copied" 
     console.log(PC1.story); //proto taken from game, but pc1 not have property yet
-    console.log(PC1.prototype); 
+    console.log(PC1.prototype); //undefined
 
 
     let PC2 = new Game("two");
-    PC2.func1();
-    console.log(PC2.prototype); 
+    PC2.func1();    //x is still undefined not changed from prev use
+    console.log(PC2.prototype); //undefined
+
+    PC2.prototype = new Game();   //want this prototype to inherit from Game's prototype properties, as if we copy,
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+jQuery, simplify and reduce code and syntax of js 
+to work on DOM and add visual effects to pages
+used to talk to web services, has plugins
+
+
+$(document).ready (function() {                 //doc.onload
+
+    $("#buynowbutton").click( function () {     //id.onclick
+
+    });
+
+
+    $("a").click( function () {     //any link onclick
+
+    });
+
+
+    $("#playlist > li").addClass("favorite");   
+    //add class to all li children of this id
+
+
+});
+
+
+
+
+*/
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+document.getElementsByClassName
+//nodelist of all elements with this class name
+
+document.getElementsByName
+//name attribute
+
+document.querySelector
+//css selector, first match returned
+var li = document.querySelector("#playlist .song");
+//find a class song within a playlist id
+
+document.querySelectorAll
+//css selector, returns all matches
+
+
+var newItem = document.createElement("li");
+newItem.innerHTML = "Your Random Heart";
+var ul = document.getElementById("playlist");
+ul.appendChild(newItem);
+
+
+There’s a lot more you can do with the DOM using JavaScript. For a good
+introduction, check out Head First HTML5 Programming
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+BOM, Browser object model
+through window object
+acts as global name space not used in alert, prompt
+
+global variables and function are stored in the window object
+alert and window.alert are the same thing
+
+document is also a property of window
+w.d.get...
+
+//gets browser's window inner dimensions
+window.innerWidth
+window.innerHeight
+
+window.close();     closes browser's window
+window.print();
+window.confirm();   //similar to prompt only it gives the user choice to ok or cancel
+window.history      //object containing the browsing history
+window.location     //url of the current page, or direct to a new load page
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+Arguments object contains every argument passed to your function
+can be accessed in an array like manner
+
+can use arguments to create a function accepting many arguments
+
+
+function nameX (para1) {
+
+    if (para1 === "here") {
+  
+        for (var i = 0; i < arguments.length; i++) {
+        console.log(arguments[i]);     //output the arguments/parameters passed
+    
+        }
+    
+    console.log("arg1 " + arguments[1]);
+    console.log(arguments);
+        
+    
+    }
+}
+    
+    nameX("here", "we", "are");
+
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+catch errors 
+checking your code regularly for errors
+
+*/
+
+window.onload = function() {
+
+    try {
+    
+        var message = document.getElementById("messge"); // error supposed to be message
+        message.innerHTML = "Here's the message!";
+    } catch (error) {
+        //console.log("Error! " + error.message);
+    }
+
+   };
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+adding event handlers with addEventListener
+
+*/
+
+                        //event name, function, bubble
+//window.addEventListener("load", init, false);
+//window.addEventListener("click", init, false);      //second event
+//window.removeEventListener
+
+function init () {
+    //page has loaded
+    console.log("here 211");
+}
+
+
+//bubble true instead of false
+//if parent, child have event on them, 
+//the true sets priority to parent
+//the false from child to the selected parent, default
+//adding in html tag onclick="event.stopPropagation() stops the flow at it
+
+
+let parent = document.getElementById("dragtarget2");
+let child = document.getElementById("dragtarget");
+
+
+false > child, parent, window
+true > window, parent, child
+window.addEventListener('click', function(){  
+    console.log("window is invoked");  
+  },false);
+
+parent.addEventListener('click', function(){  
+    console.log("Parent is invoked");  
+  },false);
+
+child.addEventListener('click', function(){ 
+    console.log("Child is invoked"); }); 
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+older browsers support onEvent and use 
+(attachEvent instead of addEventListener)
+and uses .srcElement instead of .target
+
+so can use 
+window.onload = function () {
+
+    if (div.addEventListener) {
+        div.addEventListener("click", function);
+    }
+    else if (div.attachEvent) {
+        div.attachEvent("click", function);
+    }
+
+};
+
+
+function handleClick(e) {
+    var evt = e || window.event;
+    var target;
+    
+    if (evt.target) {
+        target = evt.target;
+    } else {
+        target = evt.srcElement;
+    }
+    alert("You clicked on " + target.id);
+
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+Regular Expressions
+
+*/
+
+var areaCode = new RegExp(/[0-9]{3}/);
+
+var codeInput = "012";
+var result211 = codeInput.match(areaCode); //returns the string or null
+
+//console.log(result211);
+
+
+

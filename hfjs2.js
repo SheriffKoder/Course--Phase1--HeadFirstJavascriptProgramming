@@ -1817,7 +1817,7 @@ using prototype
 
 
 function Dog(name, breed, weight) {
-    this.name = name;
+    this.name = name;       //[general property]
     this.breed = breed;
     this.weight = weight;
 }
@@ -1837,9 +1837,6 @@ Dog.prototype.run = function() {
     console.log("Run!");
    };
 
-Dog.prototype.wag = function() {
-    console.log("Wag!");
-   };
 
 var fido = new Dog("Fido", "Mixed", 38);
 var fluffy = new Dog("Fluffy", "Poodle", 30);
@@ -1849,7 +1846,7 @@ spot.bark();
 
 //special function to spot, as it comes after it 
 //will override the prototype due to its position in code
-spot.bark = function () {   
+spot.bark = function () {               //[custom property]
     console.log(this.name + " says Woof!");
 
 }
@@ -1858,6 +1855,11 @@ spot.bark();
 fido.bark();
 
 //any methods added even after objects are created, all objects will inherit the method/behavior
+Dog.prototype.wag = function() {    //all inherit this
+    console.log("Wag!");
+   };
+
+
 
 console.log (Dog);              //this contains the name,breed,weight
 console.log (Dog.prototype);    //this contains the function etc.
@@ -1877,7 +1879,7 @@ Dog.sitting = true;
 Dog.prototype.sitting = false;  //sitting prototype, replaces object's
 
 Dog.prototype.sit = function () {
-    if (this.sitting) {
+    if (this.sitting) {                 //if spot.sitting
         console.log(this.name + " is already sitting");
     }
     else {
@@ -1913,7 +1915,7 @@ dog object to inherit from the dog prototype
 
 */
 
-var aDog = new Dog(); //not care about specifics, just need inheritance from prototype
+//var aDog = new Dog(); //not care about specifics, just need inheritance from prototype
 
 function ShowDog(name, breed, weight, handler) {
     this.name = name;
@@ -1929,6 +1931,9 @@ function ShowDog(name, breed, weight, handler) {
         console.log("Stack");
     };
 
+    //ShowDog.prototype.Dog.prototype.sit();
+    //i.e
+    //ShowDog.sit();
 
     console.log("////[][][]////");
     var scotty = new ShowDog ("Scotty", "Terrier", 15, "Cookie");
@@ -1943,7 +1948,7 @@ function ShowDog(name, breed, weight, handler) {
    let fido2 = new ShowDog("fido","35");
    console.log(fido2.sit());
 
-   //instance of both, instance look for all objects we inherit from
+   //output instance of both true, instance look for all objects we inherit from
    if (scotty instanceof Dog) {
     console.log("Scotty is a Dog");
    }
@@ -1958,3 +1963,186 @@ function ShowDog(name, breed, weight, handler) {
    //to fix that set it manually not cause confusion
    ShowDog.prototype.constructor = ShowDog;
    console.log("Scotty constructor is " + scotty.constructor);
+
+
+   //confusion, the new dog will use the prototype of its constructor
+   //if the new dog is defined before referring to the right constructor
+   //default object with the ShowDog (constructor). 
+   //And that object doesn’t have any of the Dog prototype’s properties.
+   
+   //assign the show dog prototype first after the constr. is created
+   //and before anything added to the prototype or instances of showdog
+
+
+
+    //////////////////////////////////////////
+   //////////////////////////////////////////
+   //root Object and overriding its methods
+
+   function ShowDog2 (name, breed, weight, handler) {
+    
+        Dog.call(this, name, breed, weight);    
+        //call reuse these parameters here to be processed
+        //invokes Dog, passes it to use as this, 
+        //pass ShowDog2 parameters to the Dog parameters
+        this.handler = handler;
+
+
+   }
+
+
+   //dog has its own prototype, Object
+   //every chain created will end in Object
+   //because the default prototype for any instance created is Object
+   //all objects inherit from Object
+
+   //it implements a few key methods that are a cor part of the js object system
+
+   // Object < Dog Prototype < ShowDog Prototype < ShowDog
+
+   //methods inherited from Object like hasOwnProperty, toString
+   //toString, string representation of any object
+
+
+   //override methods in those objects, like toString
+   //method of object, as all objects inherit from Obj, they can all use it
+   //but it does not work, so we make a proto with its name for our use
+
+    var dog3010 = new Dog ("fido", "38", "mixed");
+    console.log(dog3010.toString());
+
+    Dog.prototype.toString = function () {
+        return this.name + " Dog weight " + this.weight;
+    }
+    console.log(dog3010.toString()); //override method 
+
+
+    console.log("Dog is " + dog3010 );  
+    //toString gets used whenever + concatenate is used on an object
+    //in an attempt to convert object to a string
+
+    //Avoid overriding these methods
+    // constructor, hasOwnProperty, isPrototypeOF, propertyIsEnumerable
+    //isPrototypeOF: check if an object is a prototype of another object
+    //propertyIsEnumerable, if a property can be accessed by iterating through all the properties of an object
+
+    //Ok to override
+    //toString, toLocaleString, valueOf(gives the object you call it on)
+
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+
+    //extending built in objects
+    //add new functionality to all instances/builtin objects of that prototype
+    //add to the String prototype, 
+    //cliche that returns true if the string contains a known cliche
+
+
+    String.prototype.cliche = function () {
+
+        var clicheV = ["lock and load", "touch base", "open the kimono"];
+
+        for (var i=0; i<clicheV.length; i++) {
+            var index = this.indexOf( clicheV[i] );
+                if (index >= 0 ) {
+                    return true;
+                }
+        }
+            return false;
+
+    };
+
+
+    var sentences = ["I'll send my car around to pick you up.",
+                    "Let's touch base in the morning and see where we are",
+                    "We don't want to open the kimono, we just want to inform them."];
+
+    for (var i = 0; i < sentences.length; i++) {
+        var phrase = sentences[i];
+        if (phrase.cliche()) {
+            console.log("CLICHE ALERT: " + phrase);
+        }
+    }
+
+
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+
+    /*
+    experience designing and coding web applications or any kind of js app
+
+    everything is an object
+    primitives
+    arrays, like objects at times
+    functions, have properties and methods like objects
+    constructors, part function, part object
+
+    console.log(functionName instanceof Object); = true
+    //functions can be assigned to variables, can pass arguments to, can return them from functions all like objects
+
+    Dog.constructor
+
+    //method is a property in an object that is set to an anonymous function expression
+    ?
+
+    // constructors, closures, creating objects with behavior that 
+    // we can reuse and extend, parameterize the behavior of functions
+
+    // almost everything is an object, including functions, arrays, 
+    many built-in objects, and all the custom objects you make yourself.
+
+
+
+
+
+
+    */
+
+
+    // all instances created from that object inherit those properties
+
+    // If you use your own prototype object, make sure you set 
+    //the constructor function correctly to the constructor property 
+    //for consistency.
+
+    // Object is the object that all prototypes and instances ultimately inherit from. like toString and hasOwnProperty methods
+    
+
+
+    function Game (levelin) {
+        this.level = levelin;
+    }
+
+    let newGame = new Game;
+
+    newGame.level++;
+
+    Game.prototype.story = "Intro";
+    Game.prototype.func1 = function () {
+        let x;
+        console.log("X is", x);
+        console.log(this.level);
+        x = prompt("enter a value");
+        console.log("X is", x);
+    }
+
+
+    let PC1 = new Game("one");
+
+    console.log(Game);
+    console.log(Game.prototype);   //proto is in Game
+
+    console.log(PC1);       // game object is only copied" 
+    console.log(PC1.story); //proto taken from game, but pc1 not have property yet
+
+    PC1.func1();
+    console.log(PC1);       // game object is only copied" 
+    console.log(PC1.story); //proto taken from game, but pc1 not have property yet
+    console.log(PC1.prototype); 
+
+
+    let PC2 = new Game("two");
+    PC2.func1();
+    console.log(PC2.prototype); 

@@ -134,6 +134,8 @@ let text22102 = text2210.sup("red");
 //on-canplay    //when browser has buffered media and ready to play it
 //on-canplaythrough     //without stopping for buffering, fully loaded
 
+//media onerrors
+// onabrot, onemptied, onstalled, onsuspend
 
 
 
@@ -192,7 +194,11 @@ function clickFunction (para) {
     }
 
 
-//onfocus, onblur/onfocusout
+
+    //onfocus, onblur/onfocusout
+    //onfocusin (about to get focus)
+
+
 
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -291,7 +297,38 @@ videoName.ondurationchange = function {};
 audioName.onended = function ();
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/* fullscreen, does not work, also has editions for each browser*/
 
+var elem = document.documentElement;
+
+function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+
+    }
+  }
+
+
+  var output = document.getElementById("demo");
+
+  document.addEventListener("webkitfullscreenchange", function() {
+    output.innerHTML = "webkitfullscreenchange event fired!";
+  });
+
+  document.addEventListener("fullscreenerror", function() {
+    alert("Fullscreen denied");
+  });
+
+  document.addEventListener("mozfullscreenerror", function() {
+    alert("Fullscreen denied");
+
+  });
 
 
 console.log("//////////////////");
+
+

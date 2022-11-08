@@ -2378,4 +2378,101 @@ var result211 = codeInput.match(areaCode); //returns the string or null
 //console.log(result211);
 
 
+/*////////////////////////////////////////////////////////////////////*/
+
+
+//recursion, function call within a function
+
+//function has name, call that function within the function
+
+
+
+//cases that do not rely on previous fibonacci numbers to compute
+
+function fibo (n) {
+    if (n === 0 || n === 1) { //base case to not exe forever
+        return 1;
+    } else {
+        return (fibo(n-1) + fibo(n-2));
+
+    }
+    
+}
+
+for (var i=0; i<10; i++) {
+    //console.log("The fibonacci of " + i + " is " + fibo(i));
+}
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+JSON, Javascript Object Notation
+
+allows representing an object as a string 
+that can be stored and transmitted
+effective for primitive types not methods
+
+
+*/
+
+
+var fidoString = '{ "name": "Fido", "breed":"Mixed", "weight": 38     }';
+
+var fido811 = JSON.parse(fidoString);
+
+console.log("JSON parse fido is " + fido811);
+
+//var fidoString2 = JSON.stringify(fido811);
+//console.log("JSON string fido is " + fidoString2);
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+Node.js Server side javascript
+
+web and cloud(internet server) services used on the internet
+
+> includes its own runtime enviroment and set of libraries
+libraries in the same way the js uses the browser's libraries
+
+> single treaded model, one thread of execution can happen at a time 
+like js async and loop events
+
+*/
+
+
+
+//method: webserver listening for incoming web requests,
+//takes a handler that is responsible for handling requests when occured
+//sending back the string hello world
+
+http.createServer811 ( function ( request, resonse ) {
+
+        response.writeHead(200, {"Content-Type" : "text/plain"}  );
+        resonse.write("Hello World");
+        resonse.end();
+
+    }
+).listen(8888);
+
+
+//more info on nodejs.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

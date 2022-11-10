@@ -10,7 +10,8 @@ less priority to runtime performance, more towards prototyping/interactive codin
 flexibility, 
 
 JS is a scripting language, with performance close to that of native compiled languages.
-JS is also used to script applications like Adobe Photoshop, OpenOffice and Google Apps, and is even used as a server-side programming language.
+JS is also used to script applications like Adobe Photoshop, OpenOffice and Google Apps, 
+and is even used as a server-side programming language.
 
 JS 1.0 (Netscape) then Livescript/Javascript (addition ability) 1995
 JS 1.3 ECMA script 2000
@@ -2450,6 +2451,7 @@ like js async and loop events
 //takes a handler that is responsible for handling requests when occured
 //sending back the string hello world
 
+/*
 http.createServer811 ( function ( request, resonse ) {
 
         response.writeHead(200, {"Content-Type" : "text/plain"}  );
@@ -2458,13 +2460,29 @@ http.createServer811 ( function ( request, resonse ) {
 
     }
 ).listen(8888);
-
+*/
 
 //more info on nodejs.org
 
 
+/*////////////////////////////////////////////////////////////////////*/
 
 
+/*
+
+select_menu.addEventListener('change', () => select.value === 'black'
+  ? update_function('black', 'white')
+  : update_function('white', 'black')
+);
+
+/*theme switch *//*
+function update_function (bgColor, textColor) {
+  html.style.backgroundColor = bgColor;
+  html.style.color = textColor;
+}
+
+calendar example 
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
 
 
 

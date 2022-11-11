@@ -319,6 +319,7 @@ function openFullscreen() {
     output.innerHTML = "webkitfullscreenchange event fired!";
   });
 
+  
   document.addEventListener("fullscreenerror", function() {
     alert("Fullscreen denied");
   });
@@ -332,3 +333,35 @@ function openFullscreen() {
 console.log("//////////////////");
 
 
+/*////////////////////////////////////////////////////////////////////*/
+
+
+/* add event on hash change 
+
+html <body onhashchange="myFunction()">
+html <button onclick="changeHash()"> Try it </button>
+
+*/
+
+function myFunction () {
+    alert("anchor part has changed");
+}
+
+
+window.location.hash = "part5";
+
+function changeHash() {
+    location.hash = "part5";
+    x = location.hash;
+    document.getElementById("demo").innerHTML = "Anchor now is " + x;
+}
+
+//////////
+
+
+const hashUpdate = document.getElementById('hash-update-p');
+
+window.addEventListener("hashchange", function () {
+        //alert("the hash has been changed");
+        hashUpdate.textContent = window.location.hash.substring(1); //after#
+});

@@ -365,3 +365,48 @@ window.addEventListener("hashchange", function () {
         //alert("the hash has been changed");
         hashUpdate.textContent = window.location.hash.substring(1); //after#
 });
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+
+/*
+x.parentNode.nodeName
+document.body.childNodes
+//nodes are elements, text, comments, whitespaces
+
+children are elements, but nodes contains elements, text, comment, whitespaces
+
+.parentNode
+.childNodes //list of child nodes   //can loop on them
+    .firstChild, .lastChild,
+.nextSibling, .previousSibling
+
+element.hasChildNodes();    //true if it has children
+element.removeChild
+
+x.nodeName
+x.nodeType, 1(element), 2(attribute), 3(text), 8(comment)
+x.nodeValue
+
+
+
+
+
+innerHTML, including all spacing and inner HTML Tags
+innerText, just the text content of the element and its children, no css tags
+textContent, text content of element and children, with spacing/css but without tags
+
+
+const foo = null ?? "default string " //default string
+returns the right hand side operand 
+if the left hand side is null or undefined
+otherwise returns the left
+
+
+
+
+*/
+
+
+

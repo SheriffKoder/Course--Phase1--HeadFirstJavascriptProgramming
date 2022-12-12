@@ -193,6 +193,17 @@ function clickFunction (para) {
         return "message here will be displayer only in IE else default";
     }
 
+//alternatively to onunload there is onpageHide
+//that allows page to be cached
+//to find out if page is loaded from server or cashed, 
+//use the returned from the persisted event property, false if not cached
+
+
+
+//alternatively to onload there is onpageshow
+//onload does not run when page loaded from cache, but pageshow does
+
+
 
 
     //onfocus, onblur/onfocusout
@@ -293,20 +304,21 @@ para.target.appendChild(DataReceived_id);
 // Media
 
 //when the total duration of video changes i.e from 0 to loading the duration
-videoName.ondurationchange = function {};
-audioName.onended = function ();
+//videoName.ondurationchange = function {};
+//audioName.onended = function ();
 
 
 /*////////////////////////////////////////////////////////////////////*/
 /* fullscreen, does not work, also has editions for each browser*/
 
+/*
 var elem = document.documentElement;
 
 function openFullscreen() {
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
 
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    } else if (elem.webkitRequestFullscreen) { //Chrome, Safari & Opera
       elem.webkitRequestFullscreen();
 
     }
@@ -342,6 +354,8 @@ html <body onhashchange="myFunction()">
 html <button onclick="changeHash()"> Try it </button>
 
 */
+
+/*
 
 function myFunction () {
     alert("anchor part has changed");
@@ -391,7 +405,8 @@ x.nodeValue
 
 
 
-
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
 innerHTML, including all spacing and inner HTML Tags
 innerText, just the text content of the element and its children, no css tags
@@ -410,3 +425,172 @@ otherwise returns the left
 
 
 
+/*////////////////////////////////////////////////////////////////////*/
+
+/*input is similar to onchange event, but
+oninput: occurs immediately on change 
+onchange: after element loses focus, works on <select> */
+/*
+<input type="text" id="myInput" oninput="myFunction()">
+*/
+
+/*
+function myFunction() {
+    var x = document.getElementById("myInput").value;
+    document.getElementById("demo").innerHTML = "You wrote: " + x;
+  }
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+
+//oninvalid
+/*
+<form action="/action_page.php" method="get">
+  Name: <input type="text" oninvalid="alert('You must fill out the form!');" name="fname" required>
+  <input type="submit" value="Submit">
+</form>
+/*
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+.onkeypress //does not work for all keys like ATL,CTRL Etc,
+
+.onload     //body onload=""
+.onloaddata //works with video, first frame, 
+.onloadmetadata //for audio/video, duration, dimensions and next tracks info has been loaded
+.onloadstart    //loading process: when browser starts looking for the specified audio/video
+
+*/
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+//on message
+//when a message is received through an event source
+
+
+.onmousedown   //click initiate
+.onmouseup     //click release
+
+
+//// enter/leave, over/out, move
+.onmouseenter/leave   //hover over, when enters the div
+.onmouseover/out //does bubble,  propagate up(uses) the hierarchy
+//when the mouse pointer enters the div element, and its child elements (p and span).
+
+.onmousemove    //every time the mouse move(px)
+
+.onwheel        //when scroll or zoom with wheel up/down
+
+
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/* Online/Offline
+        
+<body ononline="onlineFunction()" onoffline="offlineFunction()">
+
+//?document.body.addEventListener("ononline", onlineFunction);
+//?document.body.addEventListener("onoffline", offlineFunction);
+
+function onlineFunction () {
+    alert ("Your browser is working online.");
+
+}
+
+function offlineFunction () {
+    alert ("Your browser is working offline.");
+
+}
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/* events when a connection with an event source is opened
+
+onopen
+onmessage (with properties like e.data, e.origin, e.lastEventId)
+onerror
+
+//(1) new Eventsource object
+
+var source = new EventSource("file.php");
+source.onopen = function () {
+    
+}
+
+
+
+
+
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/* media 2
+
+.onplay
+.onpause
+.onplaying //media is playing after being paused or stopped
+.onprogress //when downloading i.e buffering
+.onratechange //when playback speed changes
+
+videoID.playbackRate = 0.3;
+
+
+
+
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+let newDiv1212 = document.createElement("div");
+newDiv1212.style.cssText = "height:30vh; width: 30vw;   background: blue;" ;
+document.body.appendChild(newDiv1212);
+//works with window only
+//get the size of an element use client/inner/outer/offset height/width properties
+
+newDiv1212.onresize = resizeFunction2;
+
+function resizeFunction2 () {
+    var w = window.outerWidth;
+    var h = window.outerHeight;
+
+    var txt = "Window size: width=" + w + ", height=" + h;
+    document.getElementById("demoResize").innerHTML = txt;
+  
+
+}
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+*/
+
+let form1212 = document.createElement("form");
+
+let inputTextform1212 = document.createElement("input");
+inputTextform1212.setAttribute("type", "input");
+
+let inputResetform1212 = document.createElement("input");
+inputResetform1212.setAttribute("type", "reset");
+
+document.body.appendChild(form1212);
+form1212.appendChild(inputTextform1212);
+form1212.appendChild(inputResetform1212);
+
+
+form1212.onreset = () => alert("form reset");

@@ -578,6 +578,7 @@ function resizeFunction2 () {
 
 /*////////////////////////////////////////////////////////////////////*/
 /*
+Form Reset
 */
 
 let form1212 = document.createElement("form");
@@ -593,4 +594,20 @@ form1212.appendChild(inputTextform1212);
 form1212.appendChild(inputResetform1212);
 
 
-form1212.onreset = () => alert("form reset");
+//form1212.onreset = () => alert("form reset");
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+*/
+
+//divTest.style.csstext = ("overflow: scroll;");
+//divTest.onScroll = fn;
+
+let searchinput = document.getElementById("searchInput");
+let searchoutput = document.getElementById("demo1612");
+
+
+function searchFunction () {
+    searchoutput.innerHTML = searchinput.value;
+}

@@ -2475,7 +2475,8 @@ select_menu.addEventListener('change', () => select.value === 'black'
   : update_function('white', 'black')
 );
 
-/*theme switch *//*
+/*theme switch */
+/*
 function update_function (bgColor, textColor) {
   html.style.backgroundColor = bgColor;
   html.style.color = textColor;
@@ -2486,7 +2487,7 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/condit
 
 
 
-
+*/
 
 
 

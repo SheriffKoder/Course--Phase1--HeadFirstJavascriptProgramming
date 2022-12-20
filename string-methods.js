@@ -217,6 +217,7 @@ function clickFunction (para) {
 //onchange, for selection/checked inputs
 //click
 //contextmenu, right click, firefox has a contextmenu attribute to be edited
+//onshow when menu html element is shown as a context menu
 //oncopy
 //oncut
 //dblclick
@@ -547,9 +548,12 @@ source.onopen = function () {
 
 videoID.playbackRate = 0.3;
 
-
-
-
+.onseeking     //started change time scroll
+.onseeked   //finished change time scroll
+vidID.currentTime   //a value, either get or set time for a video
+.onstalled  //when media data is not available
+.onsuspend //when loading of media is prevented/suspended intentionally
+.ontimeupdate //when time scroll changes for any reason, can be used with current time to display time
 
 */
 
@@ -604,6 +608,7 @@ form1212.appendChild(inputResetform1212);
 //divTest.style.csstext = ("overflow: scroll;");
 //divTest.onScroll = fn;
 
+//onsearch, when search input has enter or x-icon clicked
 let searchinput = document.getElementById("searchInput");
 let searchoutput = document.getElementById("demo1612");
 
@@ -611,3 +616,20 @@ let searchoutput = document.getElementById("demo1612");
 function searchFunction () {
     searchoutput.innerHTML = searchinput.value;
 }
+
+textID.onselect = fn;
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+.touchstart
+.touchcancel    //when touch is interrupted
+.touchend
+.touchmove
+
+.transitionend  //give css on transition end
+
+.volumechange
+.waiting        //media needs to buffer
+
+*/

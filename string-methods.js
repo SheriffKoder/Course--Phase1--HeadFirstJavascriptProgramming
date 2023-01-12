@@ -630,6 +630,28 @@ textID.onselect = fn;
 .transitionend  //give css on transition end
 
 .volumechange
-.waiting        //media needs to buffer
+.waiting        //media paused because it needs to buffer
+.wheel          // mouse wheel roll
+
 
 */
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+DOM Properties
+
+.altKey, returns whether the ALT key was pressed
+.animationName, return animation name
+.bubbles,  bubbling event ?
+.button,    which mouse button pressed when mouse event triggered
+.buttons,    which mouse buttons pressed when mouse event triggered
+.cancelable,    event can have its default action prevented?
+.charCode,  returns unicode character code of the key tiggered the event
+.changeTouches, returns all touch objects state changed between previous touch and this touch
+
+
+
+*/
+
+

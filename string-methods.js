@@ -650,8 +650,25 @@ DOM Properties
 .charCode,  returns unicode character code of the key tiggered the event
 .changeTouches, returns all touch objects state changed between previous touch and this touch
 
+.clipboardData, returns an object of data affected by the clipboard operation
+.code, returns code of the key triggered the event
+.composed, returns whether the event is composed or not
+.ctrlKey, whether the CTRL key was pressed when the mouse event is triggered, mouse/keyboard/touch event
+
+.currentTarget, returns the element whose event listeners triggered the event
+.target, returns the element on which the event occured
+
+
+
+
 
 
 */
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
 
+
+
+
+*/

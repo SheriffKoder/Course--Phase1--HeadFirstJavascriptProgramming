@@ -23,5 +23,6 @@ This repo contains notes taken from the book "Head first javascript programming"
 - Regular Expressions
 
 >**Result**
-- By the end of the book a browser game is developed where users can enter the location of hidden ships on a radar-like table in an input field and the entered locations will show if the user did hit or miss.  [Try it here]
+- By the end of the book a browser game is developed where users can enter the location of hidden ships on a radar-like table in an input field to guess the ship's location in X and Y axis [A to G] [0 to 6] and the entered locations will show if the user did hit or miss. example enter A0, C4 etc.  [Try it here](https://htmlpreview.github.io/?https://github.com/SheriffKoder/Course--Phase1--HeadFirstJavascriptProgramming/blob/main/ex-ship2/ex-ship2-page359.html)
+
 ![screenshot](screenshot.png)
